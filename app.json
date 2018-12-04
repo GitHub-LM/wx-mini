@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/cart/cart",
+    "pages/module/pay/pay",
+    "pages/module/approved/approved",
+    "pages/module/uploadImg/uploadImg",
+    "pages/module/rebate/rebate",
+    "pages/module/approve/approve",
+    "pages/module/balance/balance",
+    "pages/module/logistic/logistic",
+    "pages/module/orderStatus/orderStatus",
+    "pages/module/confirm/confirm",
+    "pages/module/invoice/invoice",
+    "pages/module/addInvoice/addInvoice",
+    "pages/module/editInvoice/editInvoice",
+    "pages/index/index",
+    "pages/module/addressAdmin/addressAdmin",
+    "pages/module/login/login",
+    "pages/module/textAddress/textAddress",
+    "pages/module/editAddress/editAddress",
+    "pages/module/search/search",
+    "pages/module/goodsList/goodsList",
+    "pages/my/my",
+    "pages/module/bean/bean",
+    "pages/module/register/register",
+    "pages/sort/sort",
+    "pages/module/goodInfo/goodInfo",
+    "pages/module/forget/forget",
+    "pages/module/address/address"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "工电宝商城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a2a2a2",
+    "selectedColor": "#09b76b",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/index.png",
+        "selectedIconPath": "img/index2.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "img/sort.png",
+        "selectedIconPath": "img/sort2.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "img/cart.png",
+        "selectedIconPath": "img/cart2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "img/my.png",
+        "selectedIconPath": "img/my2.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

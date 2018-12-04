@@ -1,0 +1,158 @@
+/* pages/module/register.wxss */
+
+.inp1 {
+  /* border: 1px solid gold;  */
+  width: 100%;
+  margin: auto;
+  margin-top: 30rpx;
+  display: inline-block;
+  border-radius: 8rpx;
+  height: 70rpx;
+}
+
+.btn1 {
+  margin-top: 60rpx !important;
+  width: 90%;
+  font-size: 28rpx;
+  border: none;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #24c789;
+  color: #fff;
+}
+
+.f1, .f3, .f4 {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 1px solid #f0eded;
+}
+
+.f1 text, .f3 text, .f4 text {
+  font-size: 24rpx;
+  width: 25%;
+  display: inline-block;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.f1 input, .f3 input, .f4 input {
+  width: 100%;
+  float: right;
+  font-size: 24rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.f2 {
+  width: 100%;
+  height: 90rpx;
+  position: relative;
+  border-top: 1px solid #f0eded;
+}
+
+.f2 text:first-child {
+  font-size: 28rpx;
+  width: 25%;
+  display: inline-block;
+  height: 90rpx;
+  line-height: 90rpx;
+  position: absolute;
+  left: 0;
+}
+
+.t2 {
+  font-size: 24rpx;
+  width: 138rpx;
+  display: inline-block;
+  height: 52rpx;
+  line-height: 52rpx;
+  position: absolute;
+  right: 22px;
+  border: 2rpx solid #f0eded;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  text-align: center;
+  background: #24c789;
+  color: #fff;
+}
+
+.f2 input {
+  font-size: 24rpx;
+  position: absolute;
+  left: 0;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.f4 {
+  border-bottom: 1px solid #f0eded;
+}
+
+.f5 radio {
+  transform: scale(0.6);
+  float: left;
+  margin-left: 100rpx;
+}
+
+.f5 {
+  text-align: center;
+  margin-top: 30rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  position: relative;
+}
+
+.f5 .agree {
+  font-size: 20rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  float: left;
+}
+
+.f5 .agreement {
+  font-size: 20rpx;
+  color: #74bc03;
+  height: 40rpx;
+  line-height: 40rpx;
+  display: inline-block;
+  float: left;
+}
+
+.splitline {
+  border-left: 1rpx solid #f0eded;
+  display: inline-block;
+  position: absolute;
+  height: 90rpx;
+  right: 228rpx;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 11;
+  position: absolute;
+  top: 0;
+}
+
+.cover icon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 150rpx;
+  text-align: center;
+}
+
+.cover text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 330rpx;
+  text-align: center;
+  font-size: 28rpx;
+  letter-spacing: 3rpx;
+}

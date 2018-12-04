@@ -1,0 +1,132 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.94",
+	"appid": "wx58320097c691d015",
+	"projectname": "%E5%95%86%E5%9F%8E",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 15,
+			"list": [
+				{
+					"id": 0,
+					"name": "订单列表",
+					"pathName": "pages/module/confirm/confirm",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "购物车",
+					"pathName": "pages/cart/cart",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "登录",
+					"pathName": "pages/module/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/my",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/module/register/register",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发票管理",
+					"pathName": "pages/module/invoice/invoice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "找回密码",
+					"pathName": "pages/module/forget/forget",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/module/goodInfo/goodInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分类",
+					"pathName": "pages/sort/sort",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单状态",
+					"pathName": "pages/module/orderStatus/orderStatus",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "物流查询",
+					"pathName": "pages/module/logistic/logistic",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品列表",
+					"pathName": "pages/module/goodsList/goodsList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付",
+					"pathName": "pages/module/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "企业认证",
+					"pathName": "pages/module/approve/approve",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "认证结果",
+					"pathName": "pages/module/approved/approved"
+				}
+			]
+		}
+	}
+}

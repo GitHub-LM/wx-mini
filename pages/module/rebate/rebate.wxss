@@ -1,0 +1,59 @@
+.canUse{
+  position: relative;
+  padding: 0 20rpx;
+  height: 204rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.canUse text:nth-child(1){
+  position: absolute;
+  font-size: 56rpx;
+  top: 38rpx;
+}
+.canUse text:nth-child(2){
+  position: absolute;
+  font-size: 24rpx;
+  top: 120rpx;
+}
+.notes{
+  border-top: 20rpx solid #e5e5e5;
+  padding: 0 20rpx;
+  position: relative;
+}
+.notesItems{
+  position: relative;
+  height: 120rpx;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.notesItems text{
+  position: absolute;
+}
+.notesItems text:nth-child(1){
+  position: absolute;
+  top: 25rpx;
+  font-size: 28rpx;
+}
+.notesItems text:nth-child(2){
+  position: absolute;
+  top: 25rpx;
+  right: 20rpx;
+  font-size: 28rpx;
+}
+.notesItems text:nth-child(3){
+  position: absolute;
+  top: 77rpx;
+  font-size: 24rpx;
+}
+.notesItems text:nth-child(4){
+  position: absolute;
+  top: 77rpx;
+  right: 20rpx;
+  font-size: 24rpx;
+}
+.rebateMark image{
+  position: absolute;
+  width: 400rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

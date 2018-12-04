@@ -1,0 +1,13 @@
+<view class='approving' wx:if="{{approving == true}}">
+  <image src='../../../img/approving.png'></image>
+  <view>正在审核中...</view>
+  <view>您的资料已经提交成功，我们将尽快为您审核</view>
+  <view>客服热线：0512-65776138</view>
+</view>
+
+<view class='refuse' wx:if="{{approed == true}}">
+  <image src='../../../img/refuse.png'></image>
+  <view>认证未完成</view>
+  <!-- <view>原因</view> -->
+  <button bindtap='toComplete'>去完善资料</button>
+</view>

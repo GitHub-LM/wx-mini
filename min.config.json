@@ -1,0 +1,8 @@
+{
+  "npm": {
+    "dest": "cd WX"
+  },
+  "compilers": {
+    "babel": false
+  }
+}

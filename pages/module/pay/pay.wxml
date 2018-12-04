@@ -1,0 +1,27 @@
+<view class='needPay'>
+  <text>需支付：</text>
+  <text>¥ {{orderAmount}}</text>
+</view>
+
+<view class='paytype'>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio">
+      <view class='wechat'>
+        <text>微信支付</text>
+        <radio value="微信支付" checked="{{wechat}}" class='cir'/>
+      </view>
+      <view class='offline'>
+        <text>线下支付</text>
+        <radio value="线下支付" checked="{{offline}}" class='cir'/>
+      </view>
+    </label>
+  </radio-group>
+</view>
+<view class='offlineInfo' wx:if="{{offline == true}}">
+    <text>开户银行：   中国农业银行苏州长桥支行</text>
+    <text>银行账号：   10539501040025253</text>
+    <text>账户名称：   江苏工电宝信息科技有限公司</text>
+</view>
+
+<button class='toPay' wx:if='{{wechat== true}}' bindtap='wechatPay' data-orderId='{{orderId}}' data-orderAmount='{{orderAmount}}'>确认支付</button>
+<button class='toPay' wx:if='{{offline==true}}' bindtap='paid'>已支付</button>

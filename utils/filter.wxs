@@ -1,0 +1,19 @@
+// filter.wxs
+var dateFormat = function (date) {
+  var dates = date.split('/');
+  return dates[0] + "年" + dates[1] + "月" + dates[2] + "日";
+}
+
+var moneyFormat = function (money) {
+  return money.toFixed(2);
+}
+
+var subStr = function (string){
+  return string.substring(0,4);
+}
+
+module.exports = {
+  dateFormat: dateFormat,
+  moneyFormat: moneyFormat,
+  subStr: subStr
+}

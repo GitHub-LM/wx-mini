@@ -1,0 +1,33 @@
+<view>
+  <text>公司名称:</text>
+  <input type='text' bindinput='companyName'></input>
+</view>
+
+<view>
+  <text>经营类别:</text>
+  <picker bindchange="bindPickerChange" value="{{Index}}" range="{{operateType}}" range-key="name">
+    <view style='z-index:1111'>
+      <text class='choosed'>{{operateType[Index].name}}</text>
+    </view>
+  </picker>
+  <text class='iconfont icon-youjiantou'></text>
+</view>
+
+<view>
+  <text>公司所在地:</text>
+  <view class="section">
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view style='margin-left:75rpx'>
+        {{region[0]}}，{{region[1]}}，{{region[2]}}
+      </view>
+    </picker>
+  </view>
+  <text class='iconfont icon-youjiantou'></text>
+</view>
+
+<view>
+  <text>联系人:</text>
+  <input type='text' bindinput='linkMan'></input>
+</view>
+
+<button bindtap='submit'>下一步</button>

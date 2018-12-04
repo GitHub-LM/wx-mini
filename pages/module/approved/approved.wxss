@@ -1,0 +1,55 @@
+view {
+  text-align: center;
+}
+
+.approving image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.approving view:nth-child(2) {
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.approving view:nth-child(3) {
+  margin-top: 120rpx;
+}
+
+.approving view:nth-child(3), .approving view:nth-child(4) {
+  font-size: 24rpx;
+  color: rgba(176, 174, 174, 1);
+}
+
+.refuse, .approving {
+  margin-top: 100rpx;
+}
+
+.refuse image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.refuse view:nth-child(2) {
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.refuse view:nth-child(3) {
+  text-align: center;
+  font-size: 24rpx;
+  left: 146px;
+  color: rgba(176, 174, 174, 1);
+  margin-top: 10rpx;
+}
+
+.refuse button {
+  width: 50%;
+  border: 0px !important;
+  margin-top: 100rpx;
+  background: #6c6767;
+  color: #fff;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 24rpx;
+}

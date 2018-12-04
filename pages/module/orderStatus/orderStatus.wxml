@@ -1,0 +1,66 @@
+<view class='content'>
+  <!-- 弹窗 -->
+  <dialog id="dialog"
+      title="您要删除此订单吗？"
+      confirmText="确定"
+      cancelText="取消"
+      content="{{dialogContent}}"
+      bind:cancel="handleCancelDialog"
+      bind:confirm="handleConfirmDialog">
+   </dialog>
+  <!-- 搜索 -->
+  <view class='for_search'>
+    <input bindinput='searchGoods' bindconfirm='search'></input>
+    <icon type="search" size="20" color='gray'></icon>
+  </view>
+  <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='sel_status'>
+    <text class='{{sel_status == 1 ? "cur" : ""}}' data-status="1" bindtap='changeSta'>待付款</text>
+    <text class='{{sel_status == 2 ? "cur" : ""}}' data-status="2" bindtap='changeSta'>待发货</text>
+    <text class='{{sel_status == 3 ? "cur" : ""}}' data-status="3" bindtap='changeSta'>待收货</text>
+    <text class='{{sel_status == 6 ? "cur" : ""}}' data-status="6" bindtap='changeSta'>已完成</text>
+    <text class='{{sel_status == 0 ? "cur" : ""}}' data-status="0" bindtap='changeSta'>全部</text>
+  </scroll-view>
+
+  <!-- 订单列表 -->
+  <view class='list' wx:if="{{orderList == ''}}">
+    <view class='no_order'>暂无订单</view>
+  </view>
+  <view class='list' wx:for="{{orderList}}">
+    <view class='list_title' wx:if="{{item.status == 1}}">
+      <text>订单号：{{item.orderId}}</text>
+      <text>待付款</text>
+    </view>
+    <view class='list_title' wx:if="{{item.status == 2}}">
+      <text>订单号：{{item.orderId}}</text>
+      <text>待发货</text>
+    </view>
+    <view class='list_title' wx:if="{{item.status == 3}}">
+      <text>订单号：{{item.orderId}}</text>
+      <text>待收货</text>
+    </view>
+    <view class='list_title' wx:if="{{item.status == 6}}">
+      <text>订单号：{{item.orderId}} </text>
+      <text class='sta_ywc'>已完成  |</text>
+      <image class='deleteImg' src='../../../img/delete.png' catchtap='deleteOrder' data-orderid='{{item.orderId}}'></image>
+    </view>
+    <view class='orderinfo' wx:for="{{item.orderGoods}}" wx:for-item="orderGoodsItems" bindtap='TOGoodsInfo' data-id='{{orderGoodsItems.id}}'>
+        <image src='{{orderGoodsItems.image}}'></image>
+        <text class='order_name'>{{orderGoodsItems.title}}</text>
+        <text class='order_buynum'>订货号：{{orderGoodsItems.buyNo}} </text>
+        <text class='order_price'>¥ {{orderGoodsItems.saleUnitPrice}}</text>
+        <text class='order-num'>x {{orderGoodsItems.num}}</text>
+    </view> 
+    <view class='order_bot'>
+      <view class='hj'>合计：¥ <font>{{item.payAmount}}</font></view>
+      <view class='qxdd' wx:if="{{item.status == 1}}" catchtap='cancelOrder' data-orderid='{{item.orderId}}'>取消订单</view>
+      <view class='toPay' wx:if="{{item.status == 1}}" catchtap='toPay' data-orderid='{{item.orderId}}' data-orderAmount='{{item.payAmount}}'>去付款</view>
+      <view class='buyAgain' wx:if="{{item.status == 6}}" catchtap='buyAgain' data-orderid='{{item.orderId}}'>再次购买</view>
+      <view class='dfh_buyAgain' wx:if="{{item.status == 2}}" catchtap='buyAgain' data-orderid='{{item.orderId}}'>再次购买</view>
+      <view class='checkLogic' wx:if="{{item.status == 6 || item.status == 3}}" catchtap='checkLogic' data-orderid='{{item.orderId}}'>查看物流</view>
+      <view class='buyAgain' wx:if="{{item.status == 3}}" catchtap='confirmGain' data-orderid='{{item.orderId}}'>确认收货</view>
+      <view class='dfh_buyAgain' wx:if="{{item.status == 8}}" catchtap='buyAgain' data-orderid='{{item.orderId}}'>再次购买</view>
+    </view> 
+
+  </view>
+
+</view>

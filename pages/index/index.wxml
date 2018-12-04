@@ -1,0 +1,45 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- Search -->
+  <view class="Search">
+    <input class="gdb_selectText lm-inp" bindtap="inpclick"></input>
+    <icon type='search'></icon>
+  </view>
+
+  <!-- Banner -->
+  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="2000" duration="1000" indicator-color="#fff">
+    <block wx:for="{{bannerimgs}}" wx:for-index="index">
+      <swiper-item>
+        <image src="{{item.image}}" class="slide-image" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- HotBrand -->
+  <view class="brand">
+    <ul>
+      <li bindtap="ToBrandList" wx:for="{{HotBrand}}" wx:if="{{index <= 7}}" data-id="{{item.id}}">
+        <image src='{{item.logo}}'></image>
+      </li>
+    </ul>
+  </view>
+
+  <!-- FloorGoods -->
+  <view>
+    <view class="floor1" wx:for="{{floorInfo}}">
+      <view class='floor_name'>
+        <text class='bar'></text>
+        <text class='fw600'>{{item.floorName}}</text>
+      </view>
+      <view class="content">
+        <view style="" data-id="{{goodsItem.id}}" bindtap='ToGoodInfo' wx:for="{{item.sellerGoods}}" wx:for-item="goodsItem" wx:if="{{index <= 3}}">
+          <image src="{{goodsItem.image}}"></image>
+          <text class="gname">{{goodsItem.goods_name}}</text>
+          <text class='gprice' wx:if="{{goodsItem.sku_unit != null}}"> ¥{{goodsItem.price}} / {{goodsItem.sku_unit}}</text>
+          <text class='gprice' wx:if="{{goodsItem.sku_unit == null}}"> ¥ {{goodsItem.price}} / 个</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

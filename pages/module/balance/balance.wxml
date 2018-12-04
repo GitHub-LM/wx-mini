@@ -1,0 +1,14 @@
+<view class='beanPage'>
+  <view class="bean">
+    <view class="myBean">
+      <text >{{balance}}</text>
+      <text>账户余额</text>
+    </view>
+  </view>
+
+  <!-- 余额记录 -->
+  <view class='beanMark'>
+    <image src='../../../img/nobean.png' wx:if="{{list == ''}}"></image>
+    <image src='../../../img/nobean.png' wx:else></image>
+  </view>
+</view>

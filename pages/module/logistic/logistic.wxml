@@ -1,0 +1,31 @@
+<view class='content'>
+  <view class='logistic_tit'>
+    <view style='font-weight:600'>订单编号：{{GdbOrderId}}</view>
+  </view>
+  
+  <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex;" class='packages'>
+    <view class='packages_item {{currentIndex == index ? "selected" : "" }}' wx:for="{{logicInfo}}" bindtap='selPackage' data-index="{{index}}">
+      <text>物流公司：{{item.com}}</text>
+      <text>物流单号：{{item.nu}}</text>
+    </view>
+  </scroll-view>
+
+  <view class='logistic_Info'>
+    <view style='font-weight:600'>物流跟踪</view>
+    <view class='noLogistic' wx:if="{{noLogistic == true}}">
+      <text>暂无物流信息</text>
+    </view>
+
+    <view class='haveLogistic' wx:if="{{shunfeng == true}}" wx:for='{{info}}'>
+      <text>【{{item.location}}】</text> 
+      <text>{{item.context}}</text> 
+      <text>{{item.time}}</text> 
+    </view>
+
+    <view class='haveLogistic'  wx:if="{{unshunfeng == true}}" wx:for='{{info}}'>
+      <text>【{{item.location}}】</text> 
+      <text>{{item.context}}</text> 
+      <text>{{item.time}}</text> 
+    </view>
+  </view>
+</view>

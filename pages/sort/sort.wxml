@@ -1,0 +1,34 @@
+<wxs src="../../utils/filter.wxs" module="filters" />
+
+<view class="container">
+  <!-- Search -->
+  <view class="Search">
+    <input class="gdb_selectText iconfont icon-sousuo lm-inp" bindtap="inpclick"></input>
+  </view>
+
+  <view style='margin:auto;'>
+    <view class='meauleft'>
+      <view wx:for="{{sortObj}}" class='{{num == item.id ? "cur": "" }}' bindtap="meaus" data-id ="{{item.id}}" >{{filters.subStr(item.name)}}</view>
+    </view>
+
+    <view class="meaurig">
+      <view>
+        <text class="recommend lm-none" >推荐品牌</text>
+        <ul class="meaurig_ul">
+          <li wx:for="{{sortInfo.brand}}" class="meau1" wx:for-item="brandItems" wx:if="{{sortInfo.brand != ''}}">
+            <image src="{{brandItems.logo}}" bindtap='ToGoodsList' data-brandId="{{brandItems.brandId}}"></image>
+          </li>
+          <li class="no_recommend" wx:if="{{sortInfo.brand == ''}}"> 暂无推荐</li> 
+        </ul>
+        
+        <ul wx:for="{{sortInfo.childrens}}"  class="meau2_ul">
+          <text class="meau2">{{item.name}}</text> 
+          <li wx:for="{{item.childrens}}" wx:for-item="childrens" class="meau3" bindtap='ToGoodsList' data-categoryName='{{childrens.name}}'>
+             {{childrens.name}}
+          </li>
+        </ul>
+      </view>
+    </view>
+
+  </view>
+</view>

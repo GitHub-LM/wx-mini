@@ -1,0 +1,26 @@
+<view class='container'>
+  <view class='f1'>
+      <input placeholder='请输入手机号' class='' maxlength='11' bindinput='mobile'></input>
+  </view> 
+  <view class='f2'>
+      <input placeholder='请输入短信验证码' class='message' bindinput='message'></input>
+      <text class='splitline'></text>
+      <text class='t2' bindtap='getCode'>{{codeMes}}</text>
+  </view> 
+  <view class='f3'>
+      <input placeholder='创建密码' bindinput='password' type='password'></input>
+  </view>  
+  <view class='f4'>
+      <input placeholder='确认密码' bindinput='rePassword' type='password'></input>
+  </view>  
+  <view class='f5'>
+      <radio  checked bindtap='radioChange'></radio>
+      <text class='agree'>我已认真阅读并同意</text>
+      <text class='agreement' bindtap='terms'>《工电宝用户服务条款》</text>
+  </view>
+  <button class='btn1' bindtap='register'>注册</button>
+</view>
+<view class='cover' wx:if="{{registerSuc == true}}" >
+  <icon type="success_no_circle" color="#09b76b"   size='80' class="cart-pro-select"  />
+  <text>注册成功</text>
+</view>

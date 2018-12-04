@@ -1,0 +1,14 @@
+<view class='canUse'>
+  <text>{{cash}}</text>
+  <text>当前可用</text>
+</view>
+
+<view class='notes'>
+   <view class='notesItems' wx:for='{{rebataList}}' wx:for-item="logItems" wx:if="{{haveList == true}}" >
+      <text>{{logItems.name}}</text>
+      <text>{{logItems.cash}}</text>
+      <text>2018-06-08  22：20：19</text>
+      <text>交易成功</text>
+   </view>
+   <view class='rebateMark' wx:if="{{haveList == false}}"> <image src='../../../img/nobean.png' ></image></view>
+</view>

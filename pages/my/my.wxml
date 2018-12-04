@@ -1,0 +1,80 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <view class='log-reg' wx:if="{{hasUserInfo==false}}">
+      <view class='my-logo'>
+        <image src='http://gdbmro.com/image/index/userpho.png'></image>
+      </view>
+      <navigator url="../module/login/login" hover-class="navigator-hover" class="tologin">
+        <text class="user-motto" decode="{{true}}">登陆&nbsp;&nbsp;注册</text>
+      </navigator>
+    </view>
+    <view class='log-reg' wx:if="{{hasUserInfo==true}}">
+      <view class='my-logo'>
+        <image src='http://gdbmro.com/image/index/user-pho.jpg' style='border-radius:50%;'></image>
+      </view>
+      <view class="tologin">
+        <text class="user-motto" decode="{{true}}">工电宝 </text>
+        <text class="out" bindtap='loginOut'>退出 </text>
+
+        <text class='approve' bindtap='ToApprove' wx:if='{{certification == false}}' >去认证</text>
+        <text class='approve'  wx:if='{{certification == true}}' >已认证</text>
+      </view>
+    </view>
+    <!-- 订单状态 -->
+    <view class='order-sta'>
+      <ul>
+        <li bindtap="ToOrderStatus" data-status='1'>
+          <image src='../../img/dfk.png'></image>
+          <text>待付款</text>
+          <text class='order_num' wx:if='{{dfkNum > 0}}'>{{dfkNum}}</text>
+          <text class='order_num' wx:if='{{dfkNum > 99}}'>99+</text>
+          <text class='order_out' wx:if='{{dfkNum == ""}}'></text>
+        </li>
+        <li bindtap="ToOrderStatus" data-status='2'>
+          <image src='../../img/dfh.png'></image>
+          <text>待发货</text>
+          <text class='order_num' wx:if='{{dfhNum > 0}}'>{{dfhNum}}</text>
+          <text class='order_num' wx:if='{{dfhNum > 99}}'>99+</text>
+          <text class='order_out' wx:if='{{dfhNum == ""}}'></text>
+        </li>
+        <li bindtap="ToOrderStatus" data-status='3'>
+          <image src='../../img/dsh.png'></image>
+          <text>待收货</text>
+          <text class='order_num' wx:if='{{dshNum > 0}}'>{{dshNum}}</text>
+          <text class='order_num' wx:if='{{dshNum > 99}}'>99+</text>
+          <text class='order_out' wx:if='{{dshNum == ""}}'></text>
+        </li>
+        <li bindtap="ToOrderStatus" data-status='6'>
+          <image src='../../img/ywc.png'></image>
+          <text> 已完成</text>
+          <text class='order_num' wx:if='{{ywcNum > 0}}'>{{ywcNum}}</text>
+          <text class='order_num' wx:if='{{ywcNum > 99}}'>99+</text>
+          <text class='order_out' wx:if='{{ywcNum == ""}}'></text>
+        </li>
+        <li bindtap="ToOrderStatus" data-status='0'>
+          <image src='../../img/qbdd.png'></image>
+          <text class='qb_text'> 全部订单</text>
+        </li>
+      </ul>
+    </view>
+    <view class='bottom_t'>
+      <view class='remain' bindtap='ToBalance'>
+        <image src='../../img/ye.png'></image>
+        <text>余额</text>
+        <text class='iconfont icon-youjiantou '></text>
+      </view>
+      <view class='coin' bindtap='ToBean'>
+        <image src='../../img/gb.png'></image>
+        <text>工币</text>
+        <text class='iconfont icon-youjiantou '></text>
+      </view>
+      <view class='ticket' bindtap='ToRebate'>
+        <image src='../../img/quan.png'></image>
+        <text>抵扣券</text>
+        <text class='iconfont icon-youjiantou '></text>
+      </view>
+    </view>
+
+  </view>
+</view>

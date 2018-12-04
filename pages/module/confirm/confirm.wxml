@@ -1,0 +1,84 @@
+<wxs src="../../../utils/filter.wxs" module="filter" />
+
+<view class='address'>
+  <view bindtap='toAddressAdmin' class='add_text1' wx:if='{{getConsigner ==false}}'>
+    <image src='../../../img/dw.jpg'></image>
+    <text class='shxx'>收货信息</text>
+    <text class='add_text2'>您还未添加收货地址</text>
+    <text class='iconfont icon-youjiantou'></text>
+  </view>
+
+  <view bindtap='toAddressAdmin' class='add_text1' wx:if='{{getConsigner ==true}}'>
+    <image src='../../../img/dw.jpg'></image>
+    <text class='iconfont icon-youjiantou'></text>
+    <text class='consigner' decode="{{true}}">收货人:&emsp;{{consignerInfo.consignee}}</text>
+    <text class='mobile' decode="{{true}}">{{consignerInfo.mobile}}&emsp;</text>
+    <!-- <text class='address2' wx:if="consignerInfo.province == ''">{{province}}{{city}}{{area}}{{consignerInfo.address}}</text> -->
+    <text class='address2' >{{consignerInfo.province}}{{consignerInfo.city}}{{consignerInfo.area}}{{consignerInfo.address}}</text>
+  </view>
+
+  <view class='goodsList'>
+    <text class='title'>商品详情</text>
+    <view wx:for="{{goodsList}}" wx:for-item="goodsList">
+      <image src='{{goodsList.image}}'></image>
+      <text>{{goodsList.brandName}}{{goodsList.goodsName}}</text>
+      <text>订货号：{{goodsList.buyNo}}</text>
+      <text>¥ {{goodsList.salePrice}}</text>
+      <text>数量 x {{goodsList.num}}</text>
+    </view>
+  </view>
+
+  <view class='other'>
+    <view class='invoice' bindtap='toInvoice' data-info="{{invoiceList.invTitle}}">
+      <text class='fd24'>发票信息</text>
+      <text class='invoiceMes' wx:if="{{invoiceList}}">{{invoiceList.invTitle}}</text>
+      <text class='invoiceMes' wx:else>暂不开票</text>
+      <text class='iconfont right-arrow'></text>
+    </view>
+  </view>
+
+  <view class='ticket'>
+    <view class='invoice' bindtap=''>
+      <text class='fd24'>抵扣券</text>
+      <text class='no-invoice ' wx:if="{{totalCash == '0.00'}}">暂无可用</text>
+      <text class='no-invoice ' wx:if="{{totalCash != '0.00'}}">可抵扣金额  ¥ {{totalCash}}</text>
+    </view>
+  </view>
+
+  <view class='ticket expressfee'>
+    <view class='invoice'>
+      <text class='fd24'>工币</text>
+      <text class='coin'>（工币可用{{userCoin * 100 }}个  抵现 ¥{{userCoin}}）</text>
+      <view class="body-view coinSwitch">
+        <switch  bindchange="coinSwitch" />
+      </view>
+    </view>
+  </view>
+  <view class='ticket expressfee'>
+    <view class='invoice'>
+      <text class='fd24'>商品金额</text>
+      <text class='totalFreight candis'>¥ {{totalGoodsPrice}}</text>
+    </view>
+  </view>
+
+  <view class='ticket expressfee'>
+    <view class='invoice'>
+      <text class='fd24'>运费</text>
+      <text class='totalFreight candis'>¥ {{totalFreight}}</text>
+    </view>
+  </view>
+
+  <view class='ticket'>
+    <view class='remark'>
+      <text class='fd24'>备注</text>
+      <input class='textEdit'></input>
+    </view>
+  </view>
+
+  <view class='foot_submit'>
+    <text>合计金额：</text>
+    <font wx-if="{{useIcon == true}}">¥{{filter.moneyFormat(totalPayPrice - userCoin)}}</font>
+    <font wx-if="{{useIcon == false}}">¥{{totalPayPrice}}</font>
+    <text bindtap='subOrder' class='subOrder'>提交订单</text>
+  </view>
+</view>

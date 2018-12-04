@@ -1,0 +1,18 @@
+<view class='invoice'>
+  <view class='no-invoice' bindtap='select' data-mes="noInvoice">
+    <text>暂不开票</text>
+    <icon type="success_no_circle" size="15" class='icon_sel' color='#24c789'  wx:if="{{chooseNoInvoice}}"/>
+  </view>
+
+  <view class='zpInvoice' wx:for="{{zpInvoiceList}}" wx:for-item="zpInvoiceList" wx:if="{{zpInvoiceList.invType == 2}}"  bindtap='select'  data-mes="invoice" >
+    <text> 增值发票</text>
+    <icon type="success_no_circle" size="15" class='icon_sel' color='#24c789'  wx:if="{{chooseInvoice}}"/>
+    <text class='zpTitle'>{{zpInvoiceList.invTitle}}</text>
+    <text class='defaultText' wx:if="{{zpInvoiceList.isDefault == 1}}">默认</text>
+    <text class='line-zp'></text>
+    <text class='edit' data-info="{{zpInvoiceList}}" catchtap='edit'>编辑</text>
+    <text class='delete' data-id="{{zpInvoiceList.id}}" catchtap='deleteZp'>删除</text>
+  </view>
+  <view class='add-invoice' wx:if="{{addShow == true}}" catchtap='toAddInvoice'>新增发票</view>
+</view>
+

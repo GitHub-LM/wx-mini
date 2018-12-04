@@ -1,0 +1,9 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <text class='ts'>上传营业执照必须清晰完整，无涂抹、真实有效</text>
+  <view class='uploadimg'>
+    <image src='../../../img/uploadimg.png' wx:if="{{img == false}}" bindtap='chooseImg'></image>
+    <image src='{{imgSrc}}' wx:if="{{img == true}}" class='afterUp'></image>
+  </view>
+  <text bindtap='reupload' wx:if="{{img == true}}" class='reupload'>重新上传</text>
+  <button formType="submit">提交审核</button>
+</form>
