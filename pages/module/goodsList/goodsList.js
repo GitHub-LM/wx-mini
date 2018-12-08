@@ -9,10 +9,11 @@ Page({
    */
   data: {
     searchList: [],
-    pageNum: '1',
-    keywords: '',
+    pageNum: "1",
+    keywords: "",
     brandId: "",
-    data: {}
+    data: {},
+    priceSta:"1"
   },
   onLoad: function(options) {
     var data = {};
@@ -49,12 +50,53 @@ Page({
    
 
   },
-  //价格排序
-  sortByPrice:function(data){
+  //默认排序
+  initList:function(){
     var that=this;
-    pubFun.HttpRequst("loading", '/goods/get_list/brand_selection.action/sortFields=marketPrice&sortFlags=0', 3, data, 'GET', function(res) {
-      console.log(res);
+    that.setData({
+      priceSta:"1"
     })
+    
+  },
+  //价格排序
+  sortByPrice:function(e){
+    var that=this;
+    var status = e.currentTarget.dataset.pricesta;
+    var data={};
+    data.sortFields = "marketPrice";
+    that.data.searchList=[];
+
+    console.log(that.data.data.brandId, that.data.data.categoryName, that.data.data.keyword)
+    if (that.data.data.brandId != undefined ){
+      data.brandId = that.data.data.brandId
+    }
+    
+    if (that.data.data.categoryName != undefined ) {
+      data.categoryName = that.data.data.categoryName
+    }
+
+    if (that.data.data.keyword != undefined ) {
+      data.keyword = that.data.data.keyword
+    }
+
+    if (status == 1 || status == 3){
+      that.setData({
+        priceSta:"2",
+        sortFlags:"1"
+      })
+
+      data.sortFlags = 0;
+    }
+
+    if (status == 2){
+      that.setData({
+        priceSta: "3",
+        sortFlags: "0"
+      })
+      data.sortFlags = 1;
+    }
+    that.getListByPrice(data);
+    //console.log(that.data.priceSta)
   },
   //购物车悬浮图标
   ToCart:function(){
@@ -125,6 +167,29 @@ Page({
       }
     })
   },
+  //根据价格获取数据
+  getListByPrice:function(data){
+    var that=this;
+    pubFun.HttpRequst("loading", '/goods/get_list/brand_selection.action/' + that.data.pageNum, 3, data, 'GET', function (res) {
+      console.log(res);
+      if (res.code == 0 && res.data.searchList != '') {
+        var arr = that.data.searchList;
+        for (var i = 0; i < res.data.searchList.length; i++) {
+          arr.push(res.data.searchList[i]);
+        }
+        that.setData({
+          searchList: arr,
+          haveGoods: true
+        })
+      } else {
+        that.setData({
+          haveGoods: false,
+          noGoodsInfo: "商品暂未上架"
+        });
+
+      }
+    })
+  },
   //跳转到商品详情页
   toDetail: function(e) {
     if (app.globalData.userInfo == true){
@@ -141,7 +206,12 @@ Page({
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
     var pageNum = this.data.pageNum++;
-    this.getGoodsList(this.data.data);
+    if (this.data.priceSta == 1){
+      this.getGoodsList(this.data.data);
+    }else{
+      this.getListByPrice(this.data.data);
+    }
+    
   },
 
 })

@@ -17,12 +17,8 @@
   line-height: 80rpx;
 }
 
-.listTab text:nth-child(1) {
-  color: red;
-}
-
-.searchList text {
-  width: 100%;
+.choose {
+  color: #24c789;
 }
 
 .list_item {
@@ -113,4 +109,12 @@
   font-size: 25rpx;
   color: #24c789;
   display: inline-block;
+}
+
+.sortByPrice image {
+  width: 15rpx;
+  height: 22rpx;
+  position: relative;
+  top: 0rpx;
+  left: 10rpx;
 }
