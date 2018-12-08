@@ -245,6 +245,8 @@ Page({
       totalPrice: total.toFixed(2)
     });
   },
+
+  //结算
   toConfirm: function() {
     var idArr = [];
     for (var i = 0; i < this.data.carts.length; i++) {
@@ -252,14 +254,22 @@ Page({
         idArr.push(this.data.carts[i].id);
       }
     }
-    
-    wx.setStorage({
-      key: 'idArr',
-      data: JSON.stringify(idArr),
-    })
-    wx.navigateTo({
-      url: '../module/confirm/confirm',
-    })
+    if (idArr != ""){
+      wx.setStorage({
+        key: 'idArr',
+        data: JSON.stringify(idArr),
+      })
+      wx.navigateTo({
+        url: '../module/confirm/confirm',
+      })
+    }else{
+      wx.showToast({
+        title: '请选择商品',
+        duration:1000,
+        image:"/img/error.png"
+      })
+    }
+   
   },
   toBuy:function(){
     wx.switchTab({
