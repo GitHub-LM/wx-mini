@@ -65,10 +65,10 @@ Page({
       wx.request({
         url: app.globalData.url +"/user/wx/saasLogin",
         data: {
-          "loginName":"13584803457",
-          "password":"zyyzyy3457",
-          // "loginName": "18574161943",
-          // "password": "abc123456"
+          // "loginName":"13584803457",
+          // "password":"zyyzyy3457",
+          "loginName": "18574161943",
+          "password": "abc12345"
         },
         method: 'POST',
         header: {
