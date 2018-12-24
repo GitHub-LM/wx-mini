@@ -26,7 +26,7 @@ Page({
     var that = this;
     pubFun.HttpRequst("loading", '/user/saasLoginOut/', 3, "", 'POST', function(res) {
       wx.clearStorageSync();
-      app.globalData.userInfo = false;
+      app.globalData.userInfo = "";
       that.setData({
         hasUserInfo: false,
         dfkNum: "",

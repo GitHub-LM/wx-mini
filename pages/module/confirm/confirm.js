@@ -133,6 +133,16 @@ Page({
     } else {
       data.isBean = 0;
     }
+
+    if (that.data.consignerInfo.id == undefined){
+      wx.showToast({
+        title: '请先选择地址',
+        duration:1000,
+        image:"/img/error.png"
+      })
+      return false;
+    }
+
     data.consignAddressId = that.data.consignerInfo.id;
     data.invoiceId = that.data.invoiceList.id;
     data.cartIds = that.data.ids.split("[")[1].split("]")[0];

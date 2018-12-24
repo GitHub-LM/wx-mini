@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/cart/cart",
     "pages/module/pay/pay",
     "pages/module/approved/approved",
@@ -13,7 +14,6 @@
     "pages/module/invoice/invoice",
     "pages/module/addInvoice/addInvoice",
     "pages/module/editInvoice/editInvoice",
-    "pages/index/index",
     "pages/module/addressAdmin/addressAdmin",
     "pages/module/login/login",
     "pages/module/textAddress/textAddress",

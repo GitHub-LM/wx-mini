@@ -34,41 +34,45 @@ Page({
     var _cache = Math.random(15);
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(16[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
 
-    // if (mobile == '') {
-    //   wx.showToast({
-    //     title: '手机号不能为空',
-    //   })
-    //   return false; 
-    // } else if (mobile.length != 11 && !myreg.test(mobile)) {
-    //   wx.showToast({
-    //     title: '手机号格式有误！',
-    //     icon: 'success',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // } else if (!myreg.test(mobile)){
-    //   wx.showToast({
-    //     title: '手机号格式有误！',
-    //     icon: 'success',
-    //     duration: 1500
-    //   })
-    //   return false;  
-    // } else if (password == ''){    
-    //     wx.showToast({
-    //       title: '密码不能为空！',
-    //       icon: 'success',  
-    //       duration: 1500
-    //     })
-    //     return false;  
-    // }else
-    //{
+    if (mobile == '') {
+      wx.showToast({
+        title: '手机号不能为空',
+        image: "/img/error.png",
+        duration: 1500
+      })
+      return false; 
+    } else if (mobile.length != 11 && !myreg.test(mobile)) {
+      wx.showToast({
+        title: '手机号格式有误！',
+        image: "/img/error.png",
+        duration: 1500
+      })
+      return false;
+    } else if (!myreg.test(mobile)){
+      wx.showToast({
+        title: '手机号格式有误！',
+        image: "/img/error.png",
+        duration: 1500
+      })
+      return false;  
+    } else if (password == ''){    
+        wx.showToast({
+          title: '密码不能为空！',
+          image: "/img/error.png",
+          duration: 1500
+        })
+        return false;  
+    }else
+    {
       wx.request({
         url: app.globalData.url +"/user/wx/saasLogin",
         data: {
           // "loginName":"13584803457",
           // "password":"zyyzyy3457",
           "loginName": "18574161943",
-          "password": "abc12345"
+          "password": "abc123456"
+          // "loginName": mobile,
+          // "password": password
         },
         method: 'POST',
         header: {
@@ -89,17 +93,13 @@ Page({
                   url: "../../../" + that.data.prePage
                 })
               }else{
-                // wx.switchTab({
-                //   url: '../../../pages/index/index',
-                // })
-
                 wx.navigateBack({ delta: 2 })
               }
             }
           }else{
             wx.showToast({
               title: "账户或密码不正确",
-              icon: 'success',
+              image: "/img/error.png",
               duration: 1500,
               width:120
             })
@@ -110,7 +110,7 @@ Page({
         }
       })
 
-    //}
+    }
     return true;  
   },
   onLoad: function (options) {

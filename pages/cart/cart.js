@@ -6,7 +6,6 @@ const pubFun = require('../../js/public.js');
 Page({
   data: {
     carts: [], // 购物车列表
-    haveGoods: false, // 列表是否有数据
     totalPrice: 0, // 总价，初始为0
     selectAllStatus: true, // 全选状态，默认全选
     deleteAllStatus: false,
@@ -16,24 +15,35 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
-    pubFun.HttpRequst("loading", '/cart/list', 3, '', 'GET', function(res) {
-      console.log(res);
-      if (res.code == 0 && res.data != "") {
-        var s = res.data[0];
-        that.setData({
-          haveGoods: true, // 有数据了，那设为true
-          carts: s.list,
-          name: s.name,
-          selectAllStatus: true
-        })
-        that.getTotalPrice();
-      } else {
-        that.setData({
-          haveGoods: false
-        })
-      }
+    if (app.globalData.userInfo == "" ){
+      that.setData({
+        loginFlag:false
+      });
+     
+    }else{
+      that.setData({
+        loginFlag: true
+      });
+      pubFun.HttpRequst("loading", '/cart/list', 3, '', 'GET', function (res) {
+        console.log(res);
+        if (res.code == 0 && res.data != "") {
+          var s = res.data[0];
+          that.setData({
+            haveGoods: true, // 有数据了，那设为true
+            carts: s.list,
+            name: s.name,
+            selectAllStatus: true
+          })
+          that.getTotalPrice();
+        } else {
+          that.setData({
+            haveGoods: false
+          })
+        }
 
-    });
+      });
+    }
+    
   },
   GetList: function(data) {
     var that = this;
@@ -51,6 +61,11 @@ Page({
         haveGoods: false
       })
     }
+  },
+  toLogin:function(){
+    wx.navigateTo({
+      url: '/pages/module/login/login',
+    })
   },
   //编辑
   edit: function(e) {

@@ -46,9 +46,15 @@
       <text class='settlement' style='background:red' bindtap='deleteCarts'>删除</text>
     </view>
   </view>
-  <view class="noGoods"  wx:if="{{haveGoods ==false}}">
+  <view class="noGoods"  wx:if="{{haveGoods ==false && loginFlag ==true}}">
     <image src='../../img/cartadd.png'></image>
     <view class="cart-no-data">购物车是空的</view>
     <button bindtap='toBuy'>去购买</button>
   </view>
+  <view class="noGoods"  wx:if="{{loginFlag == false}}">
+      <image src='../../img/cartadd.png'></image>
+      <view class="cart-no-data">购物车是空的</view>
+      <button bindtap='toLogin'>去登录</button>
+  </view>
+
 </view>

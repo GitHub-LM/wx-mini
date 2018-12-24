@@ -69,7 +69,7 @@ Page({
     }
 
     if (that.data.data.keyword != undefined) {
-      data.keyword = that.data.data.keyword
+      data.keyword = that.data.data.keyword 
     }
     that.getGoodsList(data);
 
@@ -111,6 +111,7 @@ Page({
       });
       data.sortFlags = 1;
     }
+    
     that.data.data = data;
     that.getListByPrice(data);
     //console.log(that.data.priceSta)
