@@ -45,16 +45,15 @@ Page({
     that.getOrderByStatus(data);
   },
   TOGoodsInfo:function(e){
-    //console.log(e.currentTarget.dataset.id);
     wx.navigateTo({
-      url: '../../module/goodInfo/goodInfo?id=' + e.currentTarget.dataset.id,
+      url: '/pages/module/goodInfo/goodInfo?id=' + e.currentTarget.dataset.id,
     })
   },
   //查看物流
   checkLogic:function(e){
     var orderid=e.currentTarget.dataset.orderid;
     wx.navigateTo({
-      url: '../../module/logistic/logistic?orderid=' + orderid,
+      url: '/pagesmodule/logistic/logistic?orderid=' + orderid,
     })
   },
   //确认收货
@@ -145,7 +144,6 @@ Page({
     var that = this;
     data.orderId = e.currentTarget.dataset.orderid;
     pubFun.HttpRequst("loading", '/order/cancel/', 3, data, 'POST', function(res) {
-      //console.log(res);
       if (res.code == 0) {
         wx.showToast({
           title: '订单取消成功',
@@ -166,7 +164,6 @@ Page({
     var that = this;
     data.orderId = that.data.orderid;
     pubFun.HttpRequst("loading", '/order/delete', 3, data, 'GET', function(res) {
-      //console.log(res);
       if (res.code == 0) {
         that.dialog.hide();
         var data = {};

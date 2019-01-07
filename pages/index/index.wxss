@@ -4,29 +4,31 @@
   width: 92.5%;
   margin: auto;
 }
-.Search{
-  position: fixed;
- 
-}
-.lm-inp{
-  left:0;
-right:0;
-font-size:12px;
-border-radius:20rpx;
-position:fixed;
-background:#f0f0f2;
-width:69%;
-z-index:1;
-top:30rpx;
-margin:auto;
-height:70rpx;
-padding:0 10%;
 
+.Search {
+  position: fixed;
 }
+
+.lm-inp {
+  left: 0;
+  right: 0;
+  font-size: 12px;
+  border-radius: 20rpx;
+  position: fixed;
+  background: #f0f0f2;
+  width: 69%;
+  z-index: 1;
+  top: 30rpx;
+  margin: auto;
+  height: 70rpx;
+  padding: 0 10%;
+}
+
 .usermotto {
   width: 100%;
   margin-top: 50rpx;
 }
+
 /**Slideshow**/
 
 .swiper {
@@ -52,7 +54,8 @@ padding:0 10%;
 .brand text {
   font-size: 30rpx;
 }
-.bar{
+
+.bar {
   width: 8rpx;
   height: 34rpx;
   background: #09b76b;
@@ -66,7 +69,8 @@ padding:0 10%;
   bottom: 0;
   margin: auto;
 }
-.fw600 {  
+
+.fw600 {
   margin-left: 20rpx;
   font-size: 34rpx;
   font-weight: 600;
@@ -90,10 +94,9 @@ padding:0 10%;
 }
 
 .brand ul li image {
-  width:80%;
-height:80%;
-margin-top:5%;
-
+  width: 80%;
+  height: 80%;
+  margin-top: 5%;
 }
 
 .content {
@@ -110,12 +113,13 @@ margin-top:5%;
 }
 
 .content view image {
-  width: 100%;
-  height: 285rpx;
+  width: 245rpx;
+  height: 216rpx;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
+  padding: 20px;
 }
 
 .gname {
@@ -133,8 +137,7 @@ margin-top:5%;
   -webkit-box-orient: vertical;
   height: 67rpx;
   margin-top: 30rpx;
-  padding-left:20rpx;
-
+  padding-left: 20rpx;
 }
 
 .gprice {
@@ -146,30 +149,34 @@ margin-top:5%;
   font-size: 24rpx !important;
   bottom: 0rpx;
   color: red;
-  padding-left:20rpx;
+  padding-left: 20rpx;
+}
 
+.floor1, .floor2, .floor3 {
+  margin-top: 40rpx;
 }
-.floor1,.floor2,.floor3{
-  margin-top: 40rpx
-}
-.content view image{
+
+.content view image {
   border: 1px solid #f0f0f2;
 }
-.content view{
+
+.content view {
   margin-top: 30rpx;
 }
-.floor4{
-   margin-top: 40rpx
+
+.floor4 {
+  margin-top: 40rpx;
 }
-.floor_name{
+
+.floor_name {
   height: 40rpx;
   line-height: 40rpx;
   position: relative;
 }
-.Search icon{
- position:absolute;
-left:8%;
-z-index:111;
-top:45rpx;
 
+.Search icon {
+  position: absolute;
+  left: 8%;
+  z-index: 111;
+  top: 45rpx;
 }

@@ -17,7 +17,7 @@
 }
 .notes{
   border-top: 20rpx solid #e5e5e5;
-  padding: 0 20rpx;
+  padding:0 20rpx 100rpx 20rpx;
   position: relative;
 }
 .notesItems{
@@ -52,8 +52,10 @@
 }
 .rebateMark image{
   position: absolute;
-  width: 400rpx;
+  width: 150rpx;
   left: 0;
   right: 0;
+  height: 150rpx;
   margin: auto;
+  top: 100rpx;
 }

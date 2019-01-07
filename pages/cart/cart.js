@@ -25,7 +25,7 @@ Page({
         loginFlag: true
       });
       pubFun.HttpRequst("loading", '/cart/list', 3, '', 'GET', function (res) {
-        console.log(res);
+        
         if (res.code == 0 && res.data != "") {
           var s = res.data[0];
           that.setData({

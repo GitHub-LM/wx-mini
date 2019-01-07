@@ -79,7 +79,6 @@ Page({
     //统一支付
     pubFun.HttpRequst("loading", '/payment/payment_submit', 3, data, 'POST', function (res) {
       var s = res.data;
-      console.log(res)
       that.pay(s.imgSrc);
     })
 
@@ -95,6 +94,13 @@ Page({
       'paySign': param.paySign,
       'success': function(res) {
         console.log(res);
+        if (res.errMsg == "requestPayment:ok"){
+          wx.navigateTo({
+            url: '/pages/module/paySuccess/paySuccess',
+          })
+        }
+
+
         // wx.navigateBack({
         //   delta: 1,
         //   success: function() {

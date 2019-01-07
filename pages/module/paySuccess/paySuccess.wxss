@@ -1,0 +1,45 @@
+.v-img {
+  text-align: center;
+  margin-top: 100rpx;
+}
+
+view image {
+  width: 150rpx;
+  height: 150rpx;
+  text-align: center;
+  display: inline-block;
+}
+
+.v-text {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-top: 40rpx;
+  font-size: 32rpx;
+}
+
+.btn1 {
+  width: 160rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border: 1rpx solid #24c789;
+  border-radius: 10rpx;
+  position: relative;
+  top:150rpx;
+  left: 20%;
+}
+
+.btn2 {
+  width: 160rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border: 1rpx solid #24c789;
+  border-radius: 10rpx;
+  position: absolute;
+  right: 20%;
+  top:493rpx;
+}

@@ -4,7 +4,8 @@
     <text class='consignee'>{{addressList.consignee}}</text>
     <text hidden>{{addressList.id}}</text>
     <text class='mobile'>{{addressList.mobile}}</text>
-    <image src='../../../img/default.jpg' wx:if="{{addressList.isDefault ==1}}"   class='defaultImg'></image>
+    <!-- <image src='../../../img/default.jpg' wx:if="{{addressList.isDefault ==1}}"   class='defaultImg'></image> -->
+    <text class='defaultImg' wx:if="{{addressList.isDefault ==1}}" >默认</text>
     <text class='address'>{{addressList.province}}{{addressList.city}}{{addressList.area}}{{addressList.address}}</text>
     <image src='../../../img/edit.png' class='edit' catchtap='toEdit' data-info='{{addressList}}'></image>
   </view>

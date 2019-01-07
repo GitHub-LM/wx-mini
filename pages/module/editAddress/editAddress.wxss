@@ -44,7 +44,7 @@ page {
   line-height: 80rpx;
   text-align: center;
   font-size: 24rpx !important;
-  background: #09b76b;
+  background: #24c789;
   color: #fff;
   top: 80rpx;
   width: 80%;

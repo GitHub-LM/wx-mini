@@ -11,11 +11,11 @@ Page({
     var status = e.currentTarget.dataset.status;
     if (app.globalData.userInfo == true) {
       wx.navigateTo({
-        url: '../module/orderStatus/orderStatus' + "?status=" + status,
+        url: '/pages/module/orderStatus/orderStatus' + "?status=" + status,
       })
     } else {
       wx.navigateTo({
-        url: '../module/login/login',
+        url: '/pages/module/login/login',
       })
     }
 
@@ -65,7 +65,7 @@ Page({
   ToBean: function() {
     if (app.globalData.userInfo == true) {
       wx.navigateTo({
-        url: '../module/bean/bean',
+        url: '/pages/module/bean/bean',
       })
     } else {
       wx.navigateTo({
@@ -78,7 +78,7 @@ Page({
   ToRebate: function() {
     if (app.globalData.userInfo == true) {
       wx.navigateTo({
-        url: '../module/rebate/rebate',
+        url: '/pages/module/rebate/rebate',
       })
     } else {
       wx.navigateTo({

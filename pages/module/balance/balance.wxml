@@ -7,8 +7,12 @@
   </view>
 
   <!-- 余额记录 -->
-  <view class='beanMark'>
-    <image src='../../../img/nobean.png' wx:if="{{list == ''}}"></image>
-    <image src='../../../img/nobean.png' wx:else></image>
+  <view class='beanMark' wx:if="{{list == ''}}">
+    <image src='../../../img/nobean.png' ></image>
+    <text>暂无数据</text>
+  </view>
+   <view class='beanMark' wx:else>
+    <image src='../../../img/nobean.png'></image>
+    <text>暂无数据</text>
   </view>
 </view>

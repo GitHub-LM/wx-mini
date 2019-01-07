@@ -13,9 +13,16 @@
 }
 
 .defaultImg {
-  width: 68rpx;
+  width: 57rpx;
   height: 30rpx;
   margin-top: 88rpx;
+  display: inline-block;
+  font-size: 17rpx;
+  background: #24c789;
+  color: #fff;
+  text-align: center;
+  border-radius: 30rpx;
+  line-height: 30rpx;
 }
 
 .consignee {
@@ -25,7 +32,7 @@
   top: 34rpx;
   font-weight: 600;
   display: inline-block;
-  width:111rpx;
+  width: 111rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: no-wrap;
@@ -42,13 +49,13 @@
 .address {
   font-size: 24rpx;
   position: absolute;
-  left:20%;
+  left: 20%;
   top: 84rpx;
 }
 
 .edit {
-  width: 58rpx;
-  height: 58rpx;
+  width: 48rpx;
+  height: 48rpx;
   position: absolute;
   right: 4%;
   top: 42rpx;
@@ -60,12 +67,12 @@
 
 .add {
   left: 0;
-  width: 338px;
-  height: 70rpx;
-  line-height: 70rpx;
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
   text-align: center;
   position: fixed;
-  bottom: 32rpx;
+  bottom: 9%;
   color: #fff;
   font-size: 28rpx;
   right: 0;
@@ -73,6 +80,7 @@
   z-index: 111;
   background: #24c789;
   margin: auto;
+  border-radius: 8rpx;
 }
 
 .noAddress {

@@ -10,5 +10,8 @@
       <text>2018-06-08  22：20：19</text>
       <text>交易成功</text>
    </view>
-   <view class='rebateMark' wx:if="{{haveList == false}}"> <image src='../../../img/nobean.png' ></image></view>
+   <view class='rebateMark' wx:if="{{haveList == false}}"> 
+      <image src='../../../img/nobean.png' ></image>
+      <text>暂无数据</text>
+   </view>
 </view>

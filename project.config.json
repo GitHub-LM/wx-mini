@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 17,
 			"list": [
 				{
 					"id": 0,
@@ -124,7 +124,19 @@
 				{
 					"id": -1,
 					"name": "认证结果",
-					"pathName": "pages/module/approved/approved"
+					"pathName": "pages/module/approved/approved",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "地址管理",
+					"pathName": "pages/module/addressAdmin/addressAdmin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "付款成功",
+					"pathName": "pages/module/paySuccess/paySuccess"
 				}
 			]
 		}

@@ -11,6 +11,7 @@
   font-size: 24rpx;
   text-align: left;
   text-indent: 10rpx;
+  padding-left: 20rpx;
 }
 
 .button {

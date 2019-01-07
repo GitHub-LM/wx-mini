@@ -1,0 +1,6 @@
+<view>
+    <view class='v-img'><image src='/img/paysuccess.png'></image></view>
+    <view class='v-text'>支付成功</view>
+    <view class='btn1' bindtap='toOrder'>查看订单</view>
+    <view class='btn2' bindtap='buyAgain'>继续购物</view>
+</view>

@@ -230,7 +230,7 @@ Page({
       }
 
       if (this.data.categoryName != undefined && this.data.categoryName !="") {
-        data.brandId = this.data.categoryName;
+        data.categoryName = this.data.categoryName;
         this.getGoodsList(data);
       }
 

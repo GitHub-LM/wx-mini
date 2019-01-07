@@ -14,5 +14,6 @@
   <view class='beanMark'>
     <image src='../../../img/nobean.png' wx:if="{{list == ''}}"></image>
     <image src='../../../img/nobean.png' wx:else></image>
+    <text wx:if="{{list == ''}}">暂无数据</text>
   </view>
 </view>

@@ -23,5 +23,5 @@
     <text>账户名称：   江苏工电宝信息科技有限公司</text>
 </view>
 
-<button class='toPay' wx:if='{{wechat== true}}' bindtap='wechatPay' data-orderId='{{orderId}}' data-orderAmount='{{orderAmount}}'>确认支付</button>
-<button class='toPay' wx:if='{{offline==true}}' bindtap='paid'>已支付</button>
+<button class='toPay' wx:if='{{wechat== true}}' bindtap='wechatPay' data-orderId='{{orderId}}' data-orderAmount='{{orderAmount}}'>去支付</button>
+<button class='toPay' wx:if='{{offline==true}}' bindtap='paid'>提交</button>

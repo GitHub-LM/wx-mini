@@ -2,7 +2,7 @@
 <view class="container">
   <!-- Search -->
   <view class="Search">
-    <input class="gdb_selectText lm-inp" bindtap="inpclick"></input>
+    <input class="gdb_selectText lm-inp" bindtap="inpclick" placeholder='请输入订货号，型号，品牌查询'></input>
     <icon type='search'></icon>
   </view>
 

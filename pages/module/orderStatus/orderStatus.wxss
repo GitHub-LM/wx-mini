@@ -195,5 +195,5 @@
 }
 .no_order{
   text-align: center;
-  margin-top:50rpx;
+  margin-top:300rpx;
 }

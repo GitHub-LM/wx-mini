@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/module/paySuccess/paySuccess",
     "pages/index/index",
     "pages/cart/cart",
     "pages/module/pay/pay",
@@ -27,6 +28,7 @@
     "pages/module/goodInfo/goodInfo",
     "pages/module/forget/forget",
     "pages/module/address/address"
+    
     
   ],
   "window": {

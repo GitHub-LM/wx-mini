@@ -1,41 +1,62 @@
-.bean{
+.bean {
   padding: 0 20rpx;
   height: 204rpx;
   display: flex;
   justify-content: space-between;
 }
-.myBean,.freezeBean{
+
+.myBean, .freezeBean {
   width: 50%;
   position: relative;
 }
-.myBean text, .freezeBean text{
+
+.myBean text, .freezeBean text {
   position: absolute;
   display: inline-block;
 }
-.myBean text:nth-child(1){
+
+.myBean text:nth-child(1) {
   font-size: 56rpx;
   top: 38rpx;
 }
-.freezeBean text:nth-child(1){
+
+.freezeBean text:nth-child(1) {
   font-size: 56rpx;
   top: 38rpx;
 }
-.myBean text:nth-child(2){
+
+.myBean text:nth-child(2) {
   font-size: 24rpx;
   top: 120rpx;
 }
-.freezeBean text:nth-child(2){
+
+.freezeBean text:nth-child(2) {
   font-size: 24rpx;
   top: 120rpx;
 }
-.beanMark{
+
+.beanMark {
   border-top: 20rpx solid #e5e5e5;
   position: relative;
 }
-.beanMark image{
+
+.beanMark image {
   position: absolute;
-  width: 400rpx;
+  width: 150rpx;
+  left: 0;
+  right: 0;
+  height: 150rpx;
+  margin: auto;
+  top: 100rpx;
+}
+
+.beanMark text {
+  position: absolute;
   left: 0;
   right: 0;
   margin: auto;
+  text-align: center;
+  display: inline-block;
+  top: 296rpx;
+  font-size: 30rpx;
 }

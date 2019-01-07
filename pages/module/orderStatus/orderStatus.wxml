@@ -9,10 +9,10 @@
       bind:confirm="handleConfirmDialog">
    </dialog>
   <!-- 搜索 -->
-  <view class='for_search'>
+  <!-- <view class='for_search'>
     <input bindinput='searchGoods' bindconfirm='search'></input>
     <icon type="search" size="20" color='gray'></icon>
-  </view>
+  </view> -->
   <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='sel_status'>
     <text class='{{sel_status == 1 ? "cur" : ""}}' data-status="1" bindtap='changeSta'>待付款</text>
     <text class='{{sel_status == 2 ? "cur" : ""}}' data-status="2" bindtap='changeSta'>待发货</text>

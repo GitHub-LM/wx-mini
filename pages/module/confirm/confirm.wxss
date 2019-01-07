@@ -225,10 +225,11 @@ page {
 
 .textEdit {
   position: absolute;
-  top: 26rpx;
+  top: 30rpx;
   left: 144rpx;
   height: 52rpx;
   width: 86%;
+  font-size: 26rpx;
 }
 
 .foot_submit {
