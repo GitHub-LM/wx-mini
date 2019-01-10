@@ -6,7 +6,7 @@
         <image src='http://gdbmro.com/image/index/userpho.png'></image>
       </view>
       <navigator url="../module/login/login" hover-class="navigator-hover" class="tologin">
-        <text class="user-motto" decode="{{true}}">登陆&nbsp;&nbsp;注册</text>
+        <text class="user-motto" decode="{{true}}">登录&nbsp;&nbsp;&nbsp;注册</text>
       </navigator>
     </view>
     <view class='log-reg' wx:if="{{hasUserInfo==true}}">
@@ -14,7 +14,7 @@
         <image src='http://gdbmro.com/image/index/user-pho.jpg' style='border-radius:50%;'></image>
       </view>
       <view class="tologin">
-        <text class="user-motto" decode="{{true}}">工电宝 </text>
+        <text class="user-motto" decode="{{true}}">{{dealerName}} </text>
         <text class="out" bindtap='loginOut'>退出 </text>
 
         <text class='approve' bindtap='ToApprove' wx:if='{{certification == false}}' >去认证</text>
@@ -60,17 +60,17 @@
     </view>
     <view class='bottom_t'>
       <view class='remain' bindtap='ToBalance'>
-        <image src='../../img/ye.png'></image>
+        <image src='/img/ye.png'></image>
         <text>余额</text>
         <text class='iconfont icon-youjiantou '></text>
       </view>
       <view class='coin' bindtap='ToBean'>
-        <image src='../../img/gb.png'></image>
+        <image src='/img/gb.png'></image>
         <text>工币</text>
         <text class='iconfont icon-youjiantou '></text>
       </view>
       <view class='ticket' bindtap='ToRebate'>
-        <image src='../../img/quan.png'></image>
+        <image src='/img/quan.png'></image>
         <text>抵扣券</text>
         <text class='iconfont icon-youjiantou '></text>
       </view>

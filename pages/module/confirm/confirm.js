@@ -28,19 +28,34 @@ Page({
         var data = {};
         data.ids = s;
         pubFun.HttpRequst("loading", '/order_detail/mall/confirmOrder', 3, data, 'GET', function(data) {
+          var minusNum=0;
+          for (var i = 0; i < data.data.goods[0].list.length; i++) {
+            minusNum += parseInt(data.data.goods[0].list[i].bNum);
+          }
+  
           that.setData({
             totalCash: data.data.totalCash,
             totalFreight: data.data.totalFreight,
             totalGoodsPrice: data.data.totalGoodsPrice,
             totalPayPrice: data.data.totalPayPrice,
             userCoin: data.data.userCoin,
-            goodsList: data.data.goods[0].list
+            goodsList: data.data.goods[0].list,
+            minusNum: minusNum
           })
         });
       },
     })
     pubFun.HttpRequst("loading", '/receive_address/', 3, '', 'GET', that.afterAddress);
-    pubFun.HttpRequst("loading", '/invoice/buyerid', 3, '', 'GET', that.AfterInvoice);
+    pubFun.HttpRequst("loading", '/invoice/buyerid', 3, '', 'GET', function (data) {
+      for (var i = 0; i < data.data.length; i++) {
+        if (data.data[i].invType == 2) {
+          that.setData({
+            invoiceList: data.data[i]
+          })
+        }
+      }
+
+    });
 
   },
   consignerInfo: function(name) {
@@ -88,19 +103,10 @@ Page({
               })
             }
           }
+
         }
       }
     }
-  },
-  AfterInvoice: function(data) {
-    for (var i = 0; i < data.data.length; i++) {
-      if (data.data[i].invType == 2) {
-        this.setData({
-          invoiceList: data.data[i]
-        })
-      }
-    }
-
   },
   changeData: function(invoiceList) {
     this.setData({
@@ -134,32 +140,46 @@ Page({
       data.isBean = 0;
     }
 
-    if (that.data.consignerInfo.id == undefined){
+    if (that.data.consignerInfo.id == undefined) {
       wx.showToast({
         title: '请先选择地址',
-        duration:1000,
-        image:"/img/error.png"
+        duration: 1000,
+        image: "/img/error.png"
       })
       return false;
     }
 
     data.consignAddressId = that.data.consignerInfo.id;
-    data.invoiceId = that.data.invoiceList.id;
+    if (that.data.invoiceList.id != undefined){
+      data.invoiceId = that.data.invoiceList.id;
+    }
     data.cartIds = that.data.ids.split("[")[1].split("]")[0];
     data.isCash = 1;
 
     pubFun.HttpRequst("loading", '/order/', 3, data, 'POST', function(res) {
-      //console.log(res.code);
-      if(res.code == 0){
-        var data={};
+      console.log(res);
+      if (res.code == 0) {
+        var data = {};
         data.orderAmount = res.data.orderAmount;
         data.orderId = res.data.orderId;
+
+        wx.getStorage({
+          key: 'cartNum',
+          success: function (res) {
+            var cartNum = res.data -that.data.minusNum;
+            wx.setStorage({
+              key: 'cartNum',
+              data: cartNum,
+            })
+          }
+        })
+
         wx.navigateTo({
           url: '/pages/module/pay/pay?data=' + JSON.stringify(data),
         })
       }
 
-      if (res.code == -1 && res.msg == "未审核完成"){
+      if (res.code == -1 && res.msg == "未审核完成") {
         wx.navigateTo({
           url: '/pages/module/approved/approved?type=1',
         })

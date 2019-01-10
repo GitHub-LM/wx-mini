@@ -38,9 +38,8 @@ Page({
     //获取code换取openID
     wx.login({
       success: function(res) {
-        //console.log(res.code);
+        console.log(res)
         that.getOpenId(res.code);
-        console.log("时间戳为：" + timestamp, orderid, orderamount, cache, res.code);
       }
     })
 
@@ -54,18 +53,25 @@ Page({
   //获取openID
   getOpenId: function(code) {
     var that = this;
-    wx.request({
-      url: "https://api.weixin.qq.com/sns/jscode2session?appid=wx58320097c691d015&secret=d54b752620275a79efcd4189179f64e1&js_code=" + code + "&grant_type=authorization_code",
-      data: {},
-      method: 'GET',
-      success: function(res) {
-        that.generateOrder(res.data.openid);
-      },
-      fail: function() {
-      },
-      complete: function() {
-      }
+    // wx.request({
+    //   url: "https://api.weixin.qq.com/sns/jscode2session?appid=wx58320097c691d015&secret=d54b752620275a79efcd4189179f64e1&js_code=" + code + "&grant_type=authorization_code",
+    //   data: {},
+    //   method: 'GET',
+    //   success: function(res) {
+    //     that.generateOrder(res.data.openid);
+    //   },
+    //   fail: function() {
+    //   },
+    //   complete: function() {
+    //   }
+    // })
+
+    pubFun.HttpRequst("loading", 'weixin/getOpenId?code=' + code, 3, null, 'POST', function (res) {
+      console.log(res);
+      that.generateOrder(res.data.openid);
     })
+
+
   },
 
   //生成商户订单 
@@ -85,7 +91,6 @@ Page({
   },
   pay: function(param) {
     var param = JSON.parse(param);
-   // console.log("支付", param);
     wx.requestPayment({
       'timeStamp': param.timeStamp,
       'nonceStr': param.nonceStr,
@@ -93,31 +98,15 @@ Page({
       'signType': param.signType,
       'paySign': param.paySign,
       'success': function(res) {
-        console.log(res);
         if (res.errMsg == "requestPayment:ok"){
           wx.navigateTo({
             url: '/pages/module/paySuccess/paySuccess',
           })
         }
-
-
-        // wx.navigateBack({
-        //   delta: 1,
-        //   success: function() {
-        //     wx.showToast({
-        //       title: '支付成功',
-        //       icon: 'success',
-        //       duration: 2000
-        //     })
-        //   }
-        // })
       },
       'fail': function(res) {
         console.log(res);
       }
     })
-  },
-  onShow: function() {
-
   }
 })

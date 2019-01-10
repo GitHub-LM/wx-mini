@@ -18,9 +18,10 @@
   background: #f8f8f8;
   left: 0;
 }
-.no_recommend{
+
+.no_recommend {
   color: #e6e6e6;
-  width:200rpx !important;
+  width: 200rpx !important;
 }
 
 .meauleft view, .meauleft text {
@@ -36,7 +37,7 @@
   /* height: 1500px; */
   float: right;
   margin-top: 140rpx;
-  padding-bottom:150rpx;
+  padding-bottom: 150rpx;
 }
 
 .meau1 {
@@ -120,29 +121,33 @@
 .meauleft view {
   text-indent: 40rpx;
 }
-.cur{
-  background: #ffffff;
+
+.cur {
+  background: #24c789;
+  color: #fff;
 }
-.hh{
+
+.hh {
   display: block;
 }
-.nobg{
+
+.nobg {
   background: none;
 }
-.gotop{
-position:fixed;
-right:30rpx;
-bottom:50rpx;
-height:60rpx;
-width:100rpx;
-display:flex;
-flex-direction:row;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
-font-size:21rpx;
-font-weight:bold;
-background:#a78e72;
- 
+
+.gotop {
+  position: fixed;
+  right: 30rpx;
+  bottom: 50rpx;
+  height: 60rpx;
+  width: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: 21rpx;
+  font-weight: bold;
+  background: #a78e72;
 }

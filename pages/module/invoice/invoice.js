@@ -35,38 +35,51 @@ Page({
   },
   toAddInvoice: function() {
     wx.navigateTo({
-      url: '../../module/addInvoice/addInvoice',
+      url: '/pages/module/addInvoice/addInvoice',
     })
   },
 
   deleteZp: function(e) {
     var id = e.currentTarget.dataset.id;
     var data = {};
+    var that = this;
     data.id = id;
-    pubFun.HttpRequst("loading", '/invoice/del/', 3, data, 'POST', this.afterDelete);
+
+    wx.showModal({
+      title: '提示',
+      content: '确认删除吗？',
+      success:function(res){
+        if (res.confirm) {
+          pubFun.HttpRequst("loading", '/invoice/del/', 3, data, 'POST', function (data) {
+            
+            if (data.code == 0) {
+              wx.showToast({
+                title: '删除成功',
+                duration: 1500
+              })
+
+              that.setData({
+                zpInvoiceList: ""
+              })
+            }
+          });
+        }
+        
+      }
+
+    })
+   
   },
   edit: function(e) {
     console.log(e.currentTarget.dataset.info)
     wx.navigateTo({
-      url: '../../module/editInvoice/editInvoice?info=' + JSON.stringify(e.currentTarget.dataset.info),
+      url: '/pages/module/editInvoice/editInvoice?info=' + JSON.stringify(e.currentTarget.dataset.info),
     })
-  },
-  afterDelete: function(data) {
-    var that = this;
-    if (data.code == 0) {
-      wx.showToast({
-        title: '删除成功',
-        duration: 1500
-      })
-
-      that.setData({
-        zpInvoiceList: ""
-      })
-    }
   },
   select: function(e) {
     var mes = e.currentTarget.dataset.mes;
     var that = this;
+    // 选择增值税发票
     if (mes == "invoice") {
       that.setData({
         chooseInvoice: true,
@@ -78,12 +91,12 @@ Page({
           if (that.data.zpInvoiceList[i].invType == 2) {
             var zpInvoiceList = that.data.zpInvoiceList[i];
             var pages = getCurrentPages();
-            //console.log(pages, pages[pages.length - 2])
+            console.log(zpInvoiceList)
             for (var i = 0; i < pages.length; i++) {
               if (pages[i].route.indexOf("confirm") != -1) {
                 pages[i].changeData(zpInvoiceList);
                 wx.navigateTo({
-                  url: '../../module/confirm/confirm',
+                  url: '/pages/module/confirm/confirm',
                 })
               }
             }
@@ -91,14 +104,15 @@ Page({
           }
         }
 
-      }, 1500);
+      }, 1000);
 
     } else {
       that.setData({
         chooseNoInvoice: true,
         chooseInvoice: false
       })
-      setTimeout(function() {
+
+      setTimeout(function(){
         var pages = getCurrentPages();
         if (pages.length > 1) {
           var prePage = pages[pages.length - 2];
@@ -108,9 +122,10 @@ Page({
         wx.navigateBack({
           delta: 1
         })
-      }, 1500)
+      }, 1000)
 
     }
+
   },
   onShow: function() {
     // this.onLoad();

@@ -3,18 +3,11 @@
     <view class="cart-box">
       <view class='title'>
         <text class='cop_name'>{{name}}</text>
-        <!-- <text wx:if="{{edit}}" class='edit' bindtap='edit'>编辑</text>
-        <text wx:else class='edit' bindtap='done'>完成</text> -->
       </view>
       <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
         <!--  正常状态选中 -->
         <icon wx:if="{{item.selected}}" type="success" class="cart-pro-select" color="#09b76b" data-index="{{index}}"  data-id="{{item.id}}"  bindtap="selectList"/>
         <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList"/>
-        <!--  删除状态选中 -->
-        <!-- <icon wx:if="{{cut == true}}" type="success" color="red" data-index="{{index}}"  data-id="{{item.id}}" class="cart-pro-select" bindtap="selectList"/>
-        <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList"/>  -->
-
-
         <!-- 商品信息 -->
         <navigator url="../module/goodInfo/goodInfo?id={{item.sellerGoodsId}}">
           <image class="cart-thumb" src="{{item.image}}"></image>
@@ -27,7 +20,7 @@
           <text class="cart-count-num">{{item.num}}</text>
           <text class="cart-count-add" bindtap="changeNum" data-index="{{index}}" data-type="+1">+</text>
         </view>
-        <view class='deleteimg'><image src="../../img/delete.png" catchtap='deleteGoods' data-id="{{item.id}}" ></image></view>
+        <view class='deleteimg'><image src="../../img/delete.png" catchtap='deleteGoods' data-id="{{item.id}}" data-num="{{item.num}}" ></image></view>
       </view>
     </view>
     <!-- 结算状态 -->

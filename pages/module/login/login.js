@@ -34,45 +34,44 @@ Page({
     var _cache = Math.random(15);
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(16[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
 
-    // if (mobile == '') {
-    //   wx.showToast({
-    //     title: '手机号不能为空',
-    //     image: "/img/error.png",
-    //     duration: 1500
-    //   })
-    //   return false; 
-    // } else if (mobile.length != 11 && !myreg.test(mobile)) {
-    //   wx.showToast({
-    //     title: '手机号格式有误！',
-    //     image: "/img/error.png",
-    //     duration: 1500
-    //   })
-    //   return false;
-    // } else if (!myreg.test(mobile)){
-    //   wx.showToast({
-    //     title: '手机号格式有误！',
-    //     image: "/img/error.png",
-    //     duration: 1500
-    //   })
-    //   return false;  
-    // } else if (password == ''){    
-    //     wx.showToast({
-    //       title: '密码不能为空！',
-    //       image: "/img/error.png",
-    //       duration: 1500
-    //     })
-    //     return false;  
-    // }else
-    // {
+    if (mobile == '') {
+      wx.showToast({
+        title: '手机号不能为空',
+        image: "/img/error.png",
+        duration: 1500
+      })
+      return false; 
+    } else if (mobile.length != 11 && !myreg.test(mobile)) {
+      wx.showToast({
+        title: '手机号格式有误！',
+        image: "/img/error.png",
+        duration: 1500
+      })
+      return false;
+    } else if (!myreg.test(mobile)){
+      wx.showToast({
+        title: '手机号格式有误！',
+        image: "/img/error.png",
+        duration: 1500
+      })
+      return false;  
+    } else if (password == ''){    
+        wx.showToast({
+          title: '密码不能为空！',
+          image: "/img/error.png",
+          duration: 1500
+        })
+        return false;  
+    }else{
       wx.request({
         url: app.globalData.url +"/user/wx/saasLogin",
         data: {
           // "loginName":"13584803457",
           // "password":"zyyzyy3457",
-          "loginName": "18574161943",
-          "password": "abc12345"
-          // "loginName": mobile,
-          // "password": password
+          // "loginName": "18574161943",
+          // "password": "abc12345"
+          "loginName": mobile,
+          "password": password
         },
         method: 'POST',
         header: {
@@ -86,6 +85,7 @@ Page({
               app.globalData.header.Cookie = 'cookieId=' + s.data.cookieId;
               app.globalData.userInfo=true;
               app.globalData.dealerId = s.data.dealerId;
+              app.globalData.dealerName = s.data.dealerName;
               storage.put("cartNum", s.data.cartNum);
               var cc = that.data.prePage.split("/")[2];
               if (cc == "my" || cc == "sort" || cc == "cart" || cc == "index"){
@@ -110,7 +110,7 @@ Page({
         }
       })
 
-    //}
+    }
     return true;  
   },
   onLoad: function (options) {

@@ -91,6 +91,12 @@ Page({
   },
   onLoad: function() {
     var that = this;
+    if (app.globalData.dealerName !=""){
+        that.setData({
+          dealerName: app.globalData.dealerName
+        })
+    }
+
     if (app.globalData.userInfo == true) {
       that.setData({
         hasUserInfo: true

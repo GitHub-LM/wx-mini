@@ -52,6 +52,10 @@
   width: 73%;
   height: 50%;
 }
+.order-sta ul li:nth-child(5) image{
+  width: 59%;
+  height: 50%;
+}
 
 .order-sta ul {
   margin: 50rpx 0;

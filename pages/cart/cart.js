@@ -118,6 +118,8 @@ Page({
   },
   //删除商品
   deleteGoods:function(e){
+   
+    var minusNum = parseInt(e.currentTarget.dataset.num);
     var that=this;
     wx.showModal({
       title: '提示',
@@ -128,6 +130,19 @@ Page({
           data.cartId=e.currentTarget.dataset.id;
           pubFun.HttpRequst("loading", '/cart/del/', 3, data, 'POST', function (res) {
             if (res.code == 0){
+
+              //更改购物车数量
+              wx.getStorage({
+                key: 'cartNum',
+                success: function(res) {
+                  var cartNum = res.data - minusNum;
+                  wx.setStorage({
+                    key: 'cartNum',
+                    data: cartNum,
+                  })
+                },
+              })
+
               that.getTotalPrice();
               that.onShow();
             }

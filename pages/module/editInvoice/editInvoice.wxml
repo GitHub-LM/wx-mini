@@ -52,10 +52,6 @@
       <text>详细地址</text>
       <input placeholder='街道门票信息' bindinput='recvAddress' value='{{InvoiceInfo.regAddress}}'></input>
     </view>
-    <!-- <view class="body-view">
-      <text>是否设为默认</text>
-      <switch bindchange="switchChange" />
-    </view> -->
     <view class="body-view " wx:if='{{InvoiceInfo.isDefault==1}}'>
      <text>是否设为默认</text>
       <switch checked bindchange="switchChange" />

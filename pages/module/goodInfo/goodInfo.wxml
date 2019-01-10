@@ -42,7 +42,6 @@
         <image src='../../../img/gwc.png'></image>
         <text class='cont_v2_text1'>购物车</text>
         <text class='cont_v2_text2' wx:if='{{cart_num != 0}}'>{{cart_num}}</text>
-        <!-- <text class='cont_v2_text2' >{{cart_num}}</text> -->
       </view>
       <view class='cont_v3' bindtap='cart'>加入购物车</view>
     </view>
@@ -67,6 +66,7 @@
       </view>
     </view>
   </view>
+  
   <!-- 联系客服 -->
   <view class="modal-box2" hidden="{{flag2}}">
     <view class="modal-body2">

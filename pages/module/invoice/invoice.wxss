@@ -10,7 +10,7 @@
   background: #fff;
   height: 50px;
   line-height: 50px;
-   border-bottom: 12rpx solid #f5f5f5;
+  border-bottom: 12rpx solid #f5f5f5;
 }
 
 .no-invoice text {
@@ -21,22 +21,22 @@
   font-size: 28rpx;
   text-align: center;
   line-height: 56rpx;
-  
 }
 
 .add-invoice {
   position: fixed;
-  width: 83%;
+  width: 80%;
   height: 70rpx;
   line-height: 70rpx;
   text-align: center;
   background: #24c789;
   color: #fff;
   font-size: 28rpx;
-  bottom: 32rpx;
+  bottom: 214rpx;
   margin: auto;
   left: 0;
   right: 0;
+  border-radius: 8rpx;
 }
 
 .zpInvoice {
@@ -101,7 +101,7 @@
 
 .delete {
   width: 78rpx;
-  height:42rpx;
+  height: 42rpx;
   line-height: 42rpx;
   font-size: 24rpx;
   display: inline-block;
@@ -113,8 +113,9 @@
   right: 20px;
   bottom: 15px;
 }
-.icon_sel{
- left:-30rpx;
-top:16rpx;
-position:relative;
+
+.icon_sel {
+  left: -30rpx;
+  top: 16rpx;
+  position: relative;
 }

@@ -47,21 +47,19 @@ Page({
     })
 
     var that = this;
-    this.setData({
+    that.setData({
       isDefault:0
     });
-    pubFun.HttpRequst("loading", '/user/gdbmall/userDetail', 3, '', 'GET', that.customerName);
-    // pubFun.HttpRequst("loading", '/invoice/buyerid', 3, '', 'GET', that.invoice);
-  },
-  customerName:function(data){
-    this.setData({
-      invTitle: data.data.customerName
-    })
-  },
 
+    pubFun.HttpRequst("loading", '/user/gdbmall/userDetail', 3, '', 'GET', function(data){
+      that.setData({
+        invTitle: data.data.customerName
+      })
+    });
+
+  },
   // 显示
   showMenuTap: function (e) {
-    console.log('selectState')
     //获取点击菜单的类型 1点击状态 2点击时间 
     var menuType = e.currentTarget.dataset.type
     // 如果当前已经显示，再次点击时隐藏
@@ -399,29 +397,24 @@ Page({
       wx.showToast({
         title: '详细地址必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
    // console.log(data)
-    pubFun.HttpRequst("loading", '/invoice/', 3, data, 'POST', that.invoice);
+    pubFun.HttpRequst("loading", '/invoice/', 3, data, 'POST', function (data) {
+      // console.log(data);
+      if (data.code == 0) {
+        wx.showToast({
+          title: '发票新增成功',
+        })
+      }
+      setTimeout(function () {
+        wx.hideLoading()
+        wx.navigateTo({
+          url: '/pages/module/invoice/invoice',
+        })
+      }, 1000)
+    });
   },
-  invoice:function(data){
-   // console.log(data);
-    if(data.code==0){
-      wx.showToast({
-        title: '发票新增成功',
-      })
-    }
-    setTimeout(function () {
-      wx.hideLoading()
-      wx.navigateTo({
-        url: '../../module/invoice/invoice',
-      })
-    }, 1500)
-  },
-  onShow: function () {
-  },
-
-
 })

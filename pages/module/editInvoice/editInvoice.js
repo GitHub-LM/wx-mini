@@ -32,7 +32,6 @@ Page({
     invType: '',
   },
   onLoad: function(options) {
-
     var info = JSON.parse(options.info);
     this.setData({
       InvoiceInfo: info,
@@ -312,7 +311,7 @@ Page({
     data.recvArea = that.data.recvArea;
     data.recvAddress = that.data.recvAddress;
     data.isDefault = that.data.isDefault;
-    data.invType = that.data.invType;
+    // data.invType = that.data.invType;
     data.id = that.data.id;
     data._cache = Math.random(15);
     data.invType = 2;
@@ -321,7 +320,7 @@ Page({
       wx.showToast({
         title: '发票抬头必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -330,7 +329,7 @@ Page({
       wx.showToast({
         title: '纳税号必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -339,7 +338,7 @@ Page({
       wx.showToast({
         title: '纳税号格式错误',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -348,7 +347,7 @@ Page({
       wx.showToast({
         title: '开票地址必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -357,7 +356,7 @@ Page({
       wx.showToast({
         title: '开票电话必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -366,7 +365,7 @@ Page({
       wx.showToast({
         title: '开票电话错误',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -375,7 +374,7 @@ Page({
       wx.showToast({
         title: '开户银行必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -384,7 +383,7 @@ Page({
       wx.showToast({
         title: '开票银行错误',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -393,7 +392,7 @@ Page({
       wx.showToast({
         title: '银行账号必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -402,7 +401,7 @@ Page({
       wx.showToast({
         title: '银行账号错误',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -411,7 +410,7 @@ Page({
       wx.showToast({
         title: '收票人必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -420,7 +419,7 @@ Page({
       wx.showToast({
         title: '收票人手机必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -429,7 +428,7 @@ Page({
       wx.showToast({
         title: '收票人手机错误',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
@@ -438,27 +437,25 @@ Page({
       wx.showToast({
         title: '详细地址必填',
         duration: 1000,
-        image: '../../../img/error.png'
+        image: '/img/error.png'
       })
       return false;
     }
     // console.log(data)
-    pubFun.HttpRequst("loading", '/invoice/edit/', 3, data, 'POST', that.invoice);
-  },
-  invoice: function(data) {
-    // console.log(data);
-    if (data.code == 0) {
-      wx.showToast({
-        title: '发票编辑成功',
-      })
-    }
+    pubFun.HttpRequst("loading", '/invoice/edit/', 3, data, 'POST', function(data) {
+      // console.log(data);
+      if (data.code == 0) {
+        wx.showToast({
+          title: '发票编辑成功',
+          duration:1000
+        })
 
-    setTimeout(function() {
-      wx.hideLoading()
-      wx.navigateTo({
-        url: '../../module/invoice/invoice',
-      })
-    }, 1500)
+        wx.navigateTo({
+          url: '/pages/module/invoice/invoice',
+        })
+        
+      }
+    })
   },
   onShow: function() {},
 

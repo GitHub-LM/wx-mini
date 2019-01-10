@@ -1,19 +1,19 @@
-                   <wxs src="../../../utils/filter.wxs" module="filter" />
+<wxs src="../../../utils/filter.wxs" module="filter" />
 
 <view class='address'>
   <view bindtap='toAddressAdmin' class='add_text1' wx:if='{{getConsigner ==false}}'>
-    <image src='../../../img/dw.png'></image>
+    <image src='/img/dw.png'></image>
     <text class='shxx'>收货信息</text>
     <text class='add_text2'>您还未添加收货地址</text>
     <text class='iconfont icon-youjiantou'></text>
   </view>
 
   <view bindtap='toAddressAdmin' class='add_text1' wx:if='{{getConsigner ==true}}'>
-    <image src='../../../img/dw.png'></image>
+    <image src='/img/dw.png'></image>
     <text class='iconfont icon-youjiantou'></text>
     <text class='consigner' decode="{{true}}">收货人:&emsp;{{consignerInfo.consignee}}</text>
     <text class='mobile' decode="{{true}}">{{consignerInfo.mobile}}&emsp;</text>
-    <text class='address2' >{{consignerInfo.province}}{{consignerInfo.city}}{{consignerInfo.area}}{{consignerInfo.address}}</text>
+    <text class='address2'>{{consignerInfo.province}}{{consignerInfo.city}}{{consignerInfo.area}}{{consignerInfo.address}}</text>
   </view>
 
   <view class='goodsList'>
@@ -49,7 +49,7 @@
       <text class='fd24'>工币</text>
       <text class='coin'>（工币可用{{userCoin * 100 }}个  抵现 ¥{{userCoin}}）</text>
       <view class="body-view coinSwitch" wx-if="{{userCoin != 0}}">
-        <switch  bindchange="coinSwitch" />
+        <switch bindchange="coinSwitch" />
       </view>
     </view>
   </view>

@@ -182,7 +182,7 @@
   line-height: 70rpx;
   top: 13rpx;
   right: -113rpx;
-  background: #09b76b;
+  background:#24c789;
   color: #fff;
   font-size: 24rpx;
 }
