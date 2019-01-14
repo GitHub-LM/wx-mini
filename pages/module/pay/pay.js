@@ -66,9 +66,9 @@ Page({
     //   }
     // })
 
-    pubFun.HttpRequst("loading", 'weixin/getOpenId?code=' + code, 3, null, 'POST', function (res) {
+    pubFun.HttpRequst("loading", '/weixin/getOpenId?code=' + code, 3, null, 'POST', function (res) {
       console.log(res);
-      that.generateOrder(res.data.openid);
+      that.generateOrder(res.data);
     })
 
 

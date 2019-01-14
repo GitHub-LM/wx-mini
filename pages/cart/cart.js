@@ -152,23 +152,6 @@ Page({
     })
 
   },
-  //删除购物车当前商品
-  // deleteList(e) {
-  //   const index = e.currentTarget.dataset.index;
-  //   let carts = this.data.carts;
-  //   carts.splice(index, 1);
-  //   this.setData({
-  //     carts: carts
-  //   });
-  //   if (!carts.length) {
-  //     this.setData({
-  //       haveGoods: false
-  //     });
-  //   } else {
-  //     this.getTotalPrice();
-  //   }
-  // },
-  //删除选中
   deleteCarts: function(e) {
     var that = this
     var s = this.data.carts;

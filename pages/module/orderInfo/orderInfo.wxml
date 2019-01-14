@@ -1,0 +1,84 @@
+<view>
+  <view class='tit'>
+    <text wx:if="{{status == 1}}">订单状态：待付款</text>
+    <text wx:if="{{status == 2}}">订单状态：待发货</text>
+    <text wx:if="{{status == 3}}">订单状态：待收货</text>
+    <text wx:if="{{status == 6}}">订单状态：已完成</text>
+    <text wx:if="{{status == 8}}">订单状态：已取消</text>
+    <text wx:if="{{status == 9}}">订单状态：待确认付款</text>
+    <text>订单编号：{{orderId}}</text>
+    <text>下单时间：{{orderTime}}</text>
+  </view>
+
+  <text class='line'></text>
+
+  <view class='add_text1'>
+    <image src='/img/dw.png'></image>
+    <text class='iconfont icon-youjiantou'></text>
+    <text class='consigner' decode="{{true}}">收货人:&emsp;{{consignee}}</text>
+    <text class='mobile' decode="{{true}}">{{mobile}}&emsp;</text>
+    <text class='address2'>{{cityMap.provinceName}}{{cityMap.cityName}}{{cityMap.areaName}}{{cityMap.address}}</text>
+  </view>
+
+  <text class='line2'></text>
+
+  <view class='inv' wx:if="{{invType == 2}}">
+    <text>发票类型：增值税专用发票</text>
+    <text>发票抬头：{{invTitle}}</text>
+  </view>
+  <view class='inv2' wx:if="{{invType != 2}}">
+    <text>发票类型：不开发票</text>
+  </view>
+
+  <text class='line2'></text>
+
+  <view class='orderinfo' wx:for="{{orderGoods}}" wx:for-item="orderGoodsItems" bindtap='toGoodInfo' data-id="{{orderGoodsItems.sellerGoodsId}}">
+    <image src='{{orderGoodsItems.image}}'></image>
+    <text class='order_name'>{{orderGoodsItems.title}}</text>
+    <text class='order_buynum'>订货号：{{orderGoodsItems.buyNo}} </text>
+    <text class='order_price'>¥ {{orderGoodsItems.saleUnitPrice}}</text>
+    <text class='order-num'>x {{orderGoodsItems.num}}</text>
+  </view>
+
+  <view class='price'>
+     <view>
+      <text>商品总额</text>
+      <text>¥{{goodsAmount}}</text>
+     </view>
+     <view>
+      <text>运费</text>
+      <text>¥{{freightAmount}}</text>
+     </view>
+     <view>
+      <text>抵扣券抵扣</text>
+      <text>¥{{scoreDeductionAmout}}</text>
+     </view>
+  </view>
+
+  <text class='line'></text>
+
+  <view class='mustpay' wx:if="{{status == 1}}">
+    需支付：<text>¥{{amount}}</text>
+  </view>
+  <view class='mustpay' wx:if="{{status == 2}}">
+    实支付：<text>¥{{amount}}</text>
+  </view>
+  <view class='mustpay' wx:if="{{status == 8}}">
+    需支付：<text>¥{{amount}}</text>
+  </view>
+  <view class='mustpay' wx:if="{{status == 9}}">
+    需支付：<text>¥{{amount}}</text>
+  </view>
+  <view class='mustpay' wx:if="{{status == 3}}">
+    已支付：<text>¥{{amount}}</text>
+  </view>
+  <view class='mustpay' wx:if="{{status == 6}}">
+    已支付：<text>¥{{amount}}</text>
+  </view>
+
+  <!-- <text class='line2'></text>
+  <view wx:if="{{status == 1}}" class='dfk'>
+      <text>取消订单</text>
+      <text>去支付</text>
+  </view> -->
+</view>

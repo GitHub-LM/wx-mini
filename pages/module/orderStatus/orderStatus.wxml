@@ -49,7 +49,7 @@
       <text class='sta_ywc'>已完成  |</text>
       <image class='deleteImg' src='/img/delete.png' catchtap='deleteOrder' data-orderid='{{item.orderId}}'></image>
     </view>
-    <view class='orderinfo' wx:for="{{item.orderGoods}}" wx:for-item="orderGoodsItems" bindtap='TOGoodsInfo' data-id='{{orderGoodsItems.id}}'>
+    <view class='orderinfo' wx:for="{{item.orderGoods}}" wx:for-item="orderGoodsItems" bindtap='toOrderInfo' data-orderId='{{item.orderId}}'>
       <image src='{{orderGoodsItems.image}}'></image>
       <text class='order_name'>{{orderGoodsItems.title}}</text>
       <text class='order_buynum'>订货号：{{orderGoodsItems.buyNo}} </text>

@@ -32,7 +32,7 @@ Page({
           for (var i = 0; i < data.data.goods[0].list.length; i++) {
             minusNum += parseInt(data.data.goods[0].list[i].bNum);
           }
-  
+
           that.setData({
             totalCash: data.data.totalCash,
             totalFreight: data.data.totalFreight,
@@ -42,10 +42,60 @@ Page({
             goodsList: data.data.goods[0].list,
             minusNum: minusNum
           })
+
         });
       },
     })
-    pubFun.HttpRequst("loading", '/receive_address/', 3, '', 'GET', that.afterAddress);
+    //加载默认地址或选择后的地址
+    if (app.globalData.addressSelected == ""){
+      // 加载默认地址
+      pubFun.HttpRequst("loading", '/receive_address/', 3, '', 'GET', function (data) {
+
+        if (data.data != '') {
+          for (var i = 0; i < data.data.length; i++) {
+            if (data.data[i].isDefault == "1") {
+              that.setData({
+                consignerInfo: data.data[i],
+                addrId: data.data[i].id,
+                getConsigner: true
+              })
+
+              // 匹配省市区
+              for (var m = 0; m < areas.areas.length; m++) {
+                if (areas.areas[m].id == that.data.consignerInfo.provinceId) {
+                  that.setData({
+                    province: areas.areas[m].name
+                  })
+                }
+
+                if (areas.areas[m].pId == that.data.consignerInfo.provinceId &&
+                  areas.areas[m].id == that.data.consignerInfo.cityId) {
+                  that.setData({
+                    city: areas.areas[m].name
+                  })
+                }
+
+                if (areas.areas[m].pId == that.data.consignerInfo.cityId &&
+                  areas.areas[m].id == that.data.consignerInfo.areaId) {
+                  that.setData({
+                    area: areas.areas[m].name
+                  })
+                }
+              }
+
+            }
+          }
+        }
+      });
+    }else{
+      that.setData({
+        consignerInfo: app.globalData.addressSelected,
+        getConsigner:true
+      })
+      app.globalData.addressSelected = "";
+    }
+    
+    // 加载默认发票
     pubFun.HttpRequst("loading", '/invoice/buyerid', 3, '', 'GET', function (data) {
       for (var i = 0; i < data.data.length; i++) {
         if (data.data[i].invType == 2) {
@@ -69,50 +119,12 @@ Page({
       url: '../../module/addressAdmin/addressAdmin',
     })
   },
-  afterAddress: function(data) {
-    //console.log(data);
-    var that = this;
-    if (data.data != '') {
-      for (var i = 0; i < data.data.length; i++) {
-        if (data.data[i].isDefault == "1") {
-          that.setData({
-            consignerInfo: data.data[i],
-            addrId: data.data[i].id,
-            getConsigner: true
-          })
-
-          // 匹配省市区
-          for (var m = 0; m < areas.areas.length; m++) {
-            if (areas.areas[m].id == that.data.consignerInfo.provinceId) {
-              that.setData({
-                province: areas.areas[m].name
-              })
-            }
-
-            if (areas.areas[m].pId == that.data.consignerInfo.provinceId &&
-              areas.areas[m].id == that.data.consignerInfo.cityId) {
-              that.setData({
-                city: areas.areas[m].name
-              })
-            }
-
-            if (areas.areas[m].pId == that.data.consignerInfo.cityId &&
-              areas.areas[m].id == that.data.consignerInfo.areaId) {
-              that.setData({
-                area: areas.areas[m].name
-              })
-            }
-          }
-
-        }
-      }
-    }
-  },
   changeData: function(invoiceList) {
     this.setData({
       invoiceList: invoiceList
     })
   },
+  //发票信息
   toInvoice: function(e) {
     var info = e.currentTarget.dataset.info;
     wx.navigateTo({
@@ -131,6 +143,7 @@ Page({
       })
     }
   },
+  //提交订单
   subOrder: function() {
     var that = this;
     var data = {};
@@ -192,8 +205,5 @@ Page({
       }
 
     });
-  },
-  onShow: function() {
-
-  },
+  }
 })

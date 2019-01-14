@@ -4,10 +4,12 @@ const http = require('../../../js/http.js')
 const pubFun = require('../../../js/public.js')
 const storage = require('../../../js/storage.js');
 
-
 Page({
   data: {
-    dialogContent: []
+    dialogContent: [],
+    pageNum:"1",
+    searchList: [],
+    noMore:false
   },
   onReady: function() {
     // 获得dialog组件
@@ -25,29 +27,53 @@ Page({
   //获取订单状态
   getOrderByStatus: function(data) {
     var that = this;
-    pubFun.HttpRequst("loading", '/order/list/1', 3, data, 'GET', function(res) {
-      //console.log(res.data.rows);
-      if (res.data.rows != [] || res.data.rows != '') {
+    var arr = that.data.searchList;
+    pubFun.HttpRequst("loading", '/order/list/' + that.data.pageNum, 3, data, 'GET', function(res) {
+      if (res.data.rows != []) {
+        for (var i = 0; i < res.data.rows.length; i++) {
+          arr.push(res.data.rows[i]);
+        }
         that.setData({
-          orderList: res.data.rows
+          orderList: arr
         })
       }
+
+      if (res.data.rows == [] && res.data.total == 0){
+        that.setData({
+          orderList: "",
+          orderList: ''
+        })
+      }
+
+      if (res.data.rows == [] && res.data.total != 0){
+        that.setData({
+          noMore:true
+        })
+      }
+
     });
   },
   //切换订单状态
   changeSta: function(e) {
     this.setData({
-      sel_status: e.currentTarget.dataset.status
+      sel_status: e.currentTarget.dataset.status,
+      pageNum:"1",
+      searchList:[]
+      
     });
     var data = {};
     var that = this;
     data.status = e.currentTarget.dataset.status;
     that.getOrderByStatus(data);
   },
-  TOGoodsInfo:function(e){
+  toOrderInfo:function(e){
     wx.navigateTo({
-      url: '/pages/module/goodInfo/goodInfo?id=' + e.currentTarget.dataset.id,
+      url: '/pages/module/orderInfo/orderInfo?id=' + e.currentTarget.dataset.orderid,
     })
+
+    // wx.navigateTo({
+    //   url: '/pages/module/goodInfo/goodInfo?id=' + e.currentTarget.dataset.id,
+    // })
   },
   //查看物流
   checkLogic:function(e){
@@ -62,7 +88,7 @@ Page({
     var data={};
     var that=this;
     data.orderId = orderid;
-
+  
     pubFun.HttpRequst("loading", '/order/receipt/', 3, data, 'POST', function (res) {
 
         if(res.code == 0){
@@ -152,7 +178,14 @@ Page({
 
         var data = {};
         data.status = that.data.sel_status;
-        that.getOrderByStatus(data);
+        pubFun.HttpRequst("loading", '/order/list/1', 3, data, 'GET', function (res) {
+          console.log(res.data.rows);
+          that.setData({
+            orderList: res.data.rows
+          })
+
+        });
+
       }
     });
   },
@@ -174,6 +207,14 @@ Page({
   },
   onShow: function() {
 
+  },
+  onReachBottom: function () {
+    var that=this;
+    var pageNum = this.data.pageNum++;
+    var data={};
+    data.status = that.data.sel_status;
+    if (that.data.noMore != true){
+      that.getOrderByStatus(data);
+    }
   }
-
 })

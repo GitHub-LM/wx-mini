@@ -3,9 +3,8 @@ const app = getApp();
 module.exports = {
   //异步请求封装
   HttpRequst(loading, url, sessionChoose, params, method, callBack) {
-   // console.log(app.globalData.header.Cookie);
-    var paramSession = [
-      {},
+    // console.log(app.globalData.header.Cookie);
+    var paramSession = [{},
       {
         'content-type': 'application/json',
         'Cookie': app.globalData.header.Cookie,
@@ -17,7 +16,7 @@ module.exports = {
       {
         'content-type': 'application/x-www-form-urlencoded',
         'Cookie': app.globalData.header.Cookie,
-        'channel':'wx_program'
+        'channel': 'wx_program'
       },
       {
         'content-type': 'application/x-www-form-urlencoded',
@@ -31,21 +30,21 @@ module.exports = {
       header: paramSession[sessionChoose],
       method: method,
       success: function(res) {
-        if(res.data.code == 401 ){
-            wx.navigateTo({
-              url: '/pages/module/login/login',
-            })
-        }else{
+        if (res.data.code == 401) {
+          wx.navigateTo({
+            url: '/pages/module/login/login',
+          })
+        } else {
           callBack(res.data);
         }
-        
+
       }
-    
+
     })
   },
   //加入购物车
   addCart(id, num) {
-    if (app.globalData.userInfo == true){
+    if (app.globalData.userInfo == true) {
       var data = {},
         _cache = Math.random(15);
       data.sellerGoodsId = id;
@@ -62,14 +61,14 @@ module.exports = {
           "Cookie": app.globalData.header.Cookie,
           'channel': 'wx_program'
         },
-        success: function (res) {
+        success: function(res) {
           if (res.data.code == 0) {
             wx.showToast({
               title: '加入购物车成功',
               icon: 'success',
             });
 
-            setTimeout(function () {
+            setTimeout(function() {
               wx.hideToast();
               wx.setStorage({
                 key: "cartNum",
@@ -80,8 +79,8 @@ module.exports = {
           }
         }
       })
-      
-    }else{
+
+    } else {
       wx.navigateTo({
         url: '/pages/module/login/login',
       })
@@ -98,7 +97,7 @@ module.exports = {
       return false;
     }
   },
- //邮编检测
+  //邮编检测
   checkPostcode: function(t) {
     var reg = /^[0-9][0-9]{5}$/;
     if (reg.test(t)) {
@@ -151,12 +150,29 @@ module.exports = {
     var curr_year = d.getFullYear();
     String(curr_month).length < 2 ? (curr_month = "0" + curr_month) : curr_month;
     String(curr_date).length < 2 ? (curr_date = "0" + curr_date) : curr_date;
-    var yyyyMMdd = curr_year + "" + curr_month + "" + curr_date;
+    var yyyyMMdd = curr_year + "-" + curr_month + "-" + curr_date;
     return yyyyMMdd;
   },
   //格式化金钱
-  moneyFormat:function(data){
+  moneyFormat: function(data) {
     return data.toFixed(2);
+  },
+  timeFormat: function(str) {
+    var oDate = new Date(str),
+      oYear = oDate.getFullYear(),
+      oMonth = oDate.getMonth() + 1,
+      oDay = oDate.getDate(),
+      oHour = oDate.getHours(),
+      oMin = oDate.getMinutes(),
+      oSen = oDate.getSeconds(),
+      oTime = oYear + '-' + this.getzf(oMonth) + '-' + this.getzf(oDay) + ' ' + this.getzf(oHour) + ':' + this.getzf(oMin) + ':' + this.getzf(oSen); //最后拼接时间  
+    return oTime;
+  },
+  getzf: function(num) {
+    if (parseInt(num) < 10) {
+      num = '0' + num;
+    }
+    return num;
   }
 
 }

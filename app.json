@@ -27,9 +27,8 @@
     "pages/module/goodInfo/goodInfo",
     "pages/module/forget/forget",
     "pages/module/address/address",
-    "pages/module/paySuccess/paySuccess"
-    
-    
+    "pages/module/paySuccess/paySuccess",
+    "pages/module/orderInfo/orderInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

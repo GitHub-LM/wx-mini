@@ -30,21 +30,22 @@ Page({
     address: '',
     postCode: '',
     isDefault: '',
-    addressInfo:'',
-    id:''
+    addressInfo: '',
+    id: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
-    var addressInfo = JSON.parse(options.info),that=this;
-    var that=this;
+  onLoad: function(options) {
+
+    var addressInfo = JSON.parse(options.info),
+      that = this;
+    var that = this;
     console.log(addressInfo);
 
-    for (var i = 0; i < areas.areas.length;i++){
-      if (areas.areas[i].name == addressInfo.province){
+    for (var i = 0; i < areas.areas.length; i++) {
+      if (areas.areas[i].name == addressInfo.province) {
         //console.log(areas.areas[i].id);
         that.setData({
           provinceId: areas.areas[i].id
@@ -53,7 +54,7 @@ Page({
     }
 
     for (var j = 0; j < areas.areas.length; j++) {
-      if (areas.areas[j].pId == that.data.provinceId && areas.areas[j].name == addressInfo.city){
+      if (areas.areas[j].pId == that.data.provinceId && areas.areas[j].name == addressInfo.city) {
         //console.log(areas.areas[j].id);
         that.setData({
           cityId: areas.areas[j].id
@@ -61,8 +62,8 @@ Page({
       }
     }
 
-    for (var k = 0; k< areas.areas.length; k++){
-      if (areas.areas[k].pId == that.data.cityId && areas.areas[k].name == addressInfo.area){
+    for (var k = 0; k < areas.areas.length; k++) {
+      if (areas.areas[k].pId == that.data.cityId && areas.areas[k].name == addressInfo.area) {
         //console.log(areas.areas[k].id);
         that.setData({
           areaId: areas.areas[k].id
@@ -94,11 +95,11 @@ Page({
       areas: address.areas[address.citys[id][0].id],
     })
   },
-  
+
   /*
   收货人
   */
-  consigner: function (e) {
+  consigner: function(e) {
     this.setData({
       consigner: e.detail.value
     })
@@ -106,7 +107,7 @@ Page({
   /*
   手机号
   */
-  mobile: function (e) {
+  mobile: function(e) {
     this.setData({
       mobile: e.detail.value
     })
@@ -114,7 +115,7 @@ Page({
   /*
   详细地址
   */
-  address: function (e) {
+  address: function(e) {
     this.setData({
       address: e.detail.value
     })
@@ -122,7 +123,7 @@ Page({
   /*
   邮编
   */
-  postCode: function (e) {
+  postCode: function(e) {
     this.setData({
       postCode: e.detail.value
     })
@@ -130,7 +131,7 @@ Page({
   /*
     切换默认状态
   */
-  switchChange: function (e) {
+  switchChange: function(e) {
     if (e.detail.value == true) {
       this.setData({
         isDefault: 1
@@ -145,7 +146,7 @@ Page({
   /*
    保存新增地址
    */
-  savaAddress: function (e) {
+  savaAddress: function(e) {
     var that = this;
     if (that.data.consigner == '') {
       wx.showToast({
@@ -217,7 +218,7 @@ Page({
     data.id = that.data.id;
     data._cache = _cache;
 
-    pubFun.HttpRequst("loading", '/receive_address/edit/', 3, data, 'POST', function (res){
+    pubFun.HttpRequst("loading", '/receive_address/edit/', 3, data, 'POST', function(res) {
       if (res.code == 0) {
         wx.showToast({
           title: '编辑成功',
@@ -228,35 +229,37 @@ Page({
         delta: 1
       })
     });
-   
-  },
-  deleteAddress:function(){
-    var that = this;
-    var data={};
-    data.id = that.data.id;
-    
-    pubFun.HttpRequst("loading", '/receive_address/saas/del/', 3, data, 'POST', that.delete);
-  },
-  delete:function(data){
-      console.log(data);
-      if(data.code==0){
-        wx.showToast({
-          title: '删除成功',
-        })
-        setTimeout(function () {
-          wx.hideLoading()
-          wx.navigateBack({ delta: 1 }) 
-        }, 1500)
-        
-      }
-  },
 
-  onShow: function () {
-    
+  },
+  deleteAddress: function() {
+    var that = this;
+    var data = {};
+    data.id = that.data.id;
+
+    wx.showModal({
+      title: '提示',
+      content: '确认删除吗',
+      success: function (res) {
+        if (res.confirm) {
+          pubFun.HttpRequst("loading", '/receive_address/saas/del/', 3, data, 'POST', function (data) {
+            if (data.code == 0) {
+              wx.navigateBack({ delta: 1 })
+              // wx.navigateTo({
+              //   url: '/pages/module/addressAdmin/addressAdmin',
+              // })
+            }
+          });
+        }
+      }
+    })
+
+  },
+  onShow: function() {
+
   },
 
   // 点击所在地区弹出选择框
-  selectDistrict: function (e) {
+  selectDistrict: function(e) {
     var that = this
     if (that.data.addressMenuIsShow) {
       return
@@ -264,7 +267,7 @@ Page({
     that.startAddressAnimation(true)
   },
   // 执行动画
-  startAddressAnimation: function (isShow) {
+  startAddressAnimation: function(isShow) {
     var that = this
     if (isShow) {
       that.animation.translateY(0 + 'vh').step()
@@ -277,11 +280,11 @@ Page({
     })
   },
   // 点击地区选择取消按钮
-  cityCancel: function (e) {
+  cityCancel: function(e) {
     this.startAddressAnimation(false)
   },
   // 点击地区选择确定按钮
-  citySure: function (e) {
+  citySure: function(e) {
     var that = this
     var city = that.data.city
     var value = that.data.value
@@ -301,11 +304,11 @@ Page({
     //console.log(this.data.areaInfo, ids);
 
   },
-  hideCitySelected: function (e) {
+  hideCitySelected: function(e) {
     this.startAddressAnimation(false);
   },
   // 处理省市县联动逻辑
-  cityChange: function (e) {
+  cityChange: function(e) {
     var value = e.detail.value
     var provinces = this.data.provinces
     var citys = this.data.citys

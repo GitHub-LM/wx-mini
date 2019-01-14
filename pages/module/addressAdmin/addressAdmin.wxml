@@ -1,6 +1,6 @@
 <view class='addressAdmin'>
   <view wx:if="{{noAddress == true}}" class='noAddress'>暂无收货地址</view>
-  <view wx:for='{{addressList}}' wx:for-item="addressList" class='addressList' data-info="{{addressList}}" bindtap='select'>
+  <view wx:for='{{noAddress == false && addressList}}' wx:for-item="addressList" class='addressList' data-info="{{addressList}}" bindtap='select'>
     <text class='consignee'>{{addressList.consignee}}</text>
     <text hidden>{{addressList.id}}</text>
     <text class='mobile'>{{addressList.mobile}}</text>

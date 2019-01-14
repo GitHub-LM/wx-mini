@@ -4,7 +4,8 @@ const areas = require('../../../js/areas.js');
 
 Page({
   data: {
-    addressList: []
+    addressList: [],
+    noAddress:false
   },
   onLoad: function(options) {
     var that = this;
@@ -65,13 +66,23 @@ Page({
   },
   select: function(e) {
     var addressinfo = e.currentTarget.dataset.info;
-    var pages = getCurrentPages();
-    if (pages.length > 1) {
-      var prePage = pages[pages.length - 2];
-      prePage.consignerInfo(addressinfo)
-    }
-    wx.navigateBack({
-      delta: 1
+    // var pages = getCurrentPages();
+    // if (pages.length > 1) {
+    //   var prePage = pages[pages.length - 2];
+    //   prePage.consignerInfo(addressinfo)
+    // }
+    // wx.navigateBack({
+    //   delta: 1
+    // })
+    console.log(addressinfo);
+    app.globalData.addressSelected = addressinfo;
+    // wx.setStorage({
+    //   key: 'addressSelected',
+    //   data: addressinfo,
+    // })
+
+    wx.navigateTo({
+      url: '/pages/module/confirm/confirm',
     })
   },
   onShow: function() {

@@ -252,11 +252,16 @@ Page({
           title: '新增地址成功',
           duration: 1000
         })
+        wx.navigateTo({
+          url: '/pages/module/addressAdmin/addressAdmin',
+        })
       };
 
-      wx.navigateBack({
-        delta: 1
-      })
+      // wx.navigateBack({
+      //   delta: 1
+      // })
+
+     
     });
 
   },

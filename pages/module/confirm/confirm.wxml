@@ -13,7 +13,7 @@
     <text class='iconfont icon-youjiantou'></text>
     <text class='consigner' decode="{{true}}">收货人:&emsp;{{consignerInfo.consignee}}</text>
     <text class='mobile' decode="{{true}}">{{consignerInfo.mobile}}&emsp;</text>
-    <text class='address2'>{{consignerInfo.province}}{{consignerInfo.city}}{{consignerInfo.area}}{{consignerInfo.address}}</text>
+    <text class='address2'>{{consignerInfo.province}}{{consignerInfo.city}}{{consignerInfo.area}}{{consignerInfo.address}}         </text>
   </view>
 
   <view class='goodsList'>
